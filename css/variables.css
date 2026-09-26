@@ -1,0 +1,125 @@
+/* ==========================================================================
+   Rainy Days – design tokens
+   Values taken from the original Rainy Days styles.css (HTML & CSS CA),
+   organised the same way as in Semester Project 1 (variables.css).
+   ========================================================================== */
+
+:root {
+  /* ----- Colors: brand ----- */
+  --color-navy: #0d3b41;
+  --color-navy-dark: #0d2c36;
+  --color-navy-40: rgba(13, 59, 65, 0.4);
+
+  --color-blue-dark: #0f5b87;
+
+  --color-ocean: #13778d;
+  --color-ocean-5: rgba(19, 119, 141, 0.05);
+
+  --color-teal: #118a8a;
+
+  /* Original accent green – contrast with white text is only 3.83:1 (fails WCAG AA for normal text).
+     Use it for large text / decoration; for buttons with white text use --color-green-dark. */
+  --color-green: #40916c;
+  --color-green-dark: #2d6a4f; /* 6.39:1 with white */
+
+  --color-success: rgba(4, 217, 57, 0.5);
+
+  /* ----- Colors: neutrals ----- */
+  --color-black: #000000;
+  --color-black-10: rgba(0, 0, 0, 0.1);
+  --color-black-15: rgba(0, 0, 0, 0.15);
+  --color-black-50: rgba(0, 0, 0, 0.5);
+  --color-black-60: rgba(0, 0, 0, 0.6);
+  --color-black-80: rgba(0, 0, 0, 0.8);
+  --color-black-90: rgba(0, 0, 0, 0.9);
+
+  --color-white: #ffffff;
+
+  --color-grey-100: #f5f5f5; /* hover backgrounds */
+  --color-grey-200: #e5e5e5; /* dividers */
+  --color-grey-250: #e2e8e8; /* chips hover */
+  --color-grey-300: #d1d5db; /* borders */
+  --color-grey-400: #cccccc; /* input borders */
+  /* Original --color-gray #aeaeb2 has only 2.21:1 on white – OK on dark backgrounds only.
+     For text on white use --color-grey-600. */
+  --color-grey-500: #aeaeb2;
+  --color-grey-600: #666666; /* 5.74:1 on white */
+
+  /* ----- Typography ----- */
+  --font-family-body: "din-1451-lt-pro", "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-family-header: "Bebas Neue", "Impact", "Arial Narrow", sans-serif;
+  --font-family-ui: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-600: 600;
+  --fw-700: 700;
+
+  --fs-12: 12px;
+  --fs-14: 14px;
+  --fs-16: 16px;
+  --fs-18: 18px;
+  --fs-20: 20px;
+  --fs-24: 24px;
+  --fs-32: 32px;
+  --fs-36: 36px;
+  --fs-42: 42px;
+  --fs-52: 52px;
+  --fs-64: 64px;
+  --fs-90: 90px;
+  --fs-200: 200px; /* hero logo text */
+
+  --lh-120: 120%;
+  --lh-140: 140%;
+  --lh-150: 150%;
+  --lh-160: 160%;
+
+  --ls-1: 1px;
+  --ls-2: 2px;
+  --ls-4: 4px;
+
+  /* ----- Spacing ----- */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-80: 80px;
+  --space-112: 112px;
+
+  /* ----- Layout ----- */
+  --container-max: 1440px;
+  --content-narrow: 500px;
+
+  /* ----- Borders & radius ----- */
+  --stroke-1: 1px;
+  --radius-0: 0;
+  --radius-20: 20px;
+  --radius-full: 9999px;
+
+  /* ----- Effects ----- */
+  --shadow-1: 0 20px 40px var(--color-black-10);
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+}
+
+/* ----- Mobile: override the scale, components stay the same ----- */
+@media (max-width: 768px) {
+  :root {
+    --fs-36: 28px;
+    --fs-42: 32px;
+    --fs-52: 36px;
+    --fs-64: 42px;
+    --fs-90: 56px;
+    --fs-200: 22vw;
+
+    --space-64: 40px;
+    --space-80: 48px;
+    --space-112: 64px;
+  }
+}
