@@ -1,0 +1,46 @@
+/* ==========================================================================
+   Text pages – terms.html, privacy.html
+   ========================================================================== */
+
+.legal {
+  max-width: 760px;
+  padding-top: var(--space-32);
+  padding-bottom: var(--space-112);
+}
+
+.legal .breadcrumbs {
+  margin-bottom: var(--space-32);
+}
+
+.legal__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  margin-bottom: var(--space-48);
+}
+
+.legal__notice {
+  margin-bottom: var(--space-40);
+}
+
+.legal__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  margin-bottom: var(--space-40);
+}
+
+.legal__section h2 {
+  font-size: var(--fs-32);
+}
+
+.legal__section ul {
+  padding-left: var(--space-20);
+  list-style: disc;
+}
+
+.legal__section a {
+  color: var(--color-ocean);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

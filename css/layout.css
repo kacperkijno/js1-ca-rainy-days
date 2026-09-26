@@ -1,0 +1,347 @@
+/* ==========================================================================
+   Layout – container, sections, header + navigation, page hero, footer
+   ========================================================================== */
+
+/* ----- Container & sections ----- */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.section {
+  padding: var(--space-112) 0;
+}
+
+.section--tight {
+  padding: var(--space-64) 0;
+}
+
+/* ----- Header -----
+   Default: fixed, see-through with blur – sits on top of the hero image.
+   header--solid: for pages without a hero (product, checkout…). */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  background-color: var(--color-navy-40);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.header--solid {
+  position: sticky;
+  background-color: var(--color-ocean);
+  background-image: url("../assets/images/hero-sky.webp");
+  background-position: center top;
+  background-size: cover;
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-32);
+  height: var(--header-height);
+}
+
+.header__logo img {
+  filter: drop-shadow(0 2px 4px var(--color-black-50));
+}
+
+/* Hamburger + its checkbox are only used on mobile (see media query) */
+.header__toggle,
+.header__burger {
+  display: none;
+}
+
+/* ----- Main navigation ----- */
+
+.nav__list {
+  display: flex;
+  gap: var(--space-40);
+}
+
+.nav__link {
+  position: relative;
+  color: var(--color-white);
+  font-size: var(--fs-16);
+  font-weight: var(--fw-500);
+  letter-spacing: var(--ls-1);
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px var(--color-black-50);
+}
+
+/* Underline that grows from the left on hover / on the current page */
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
+}
+
+.nav__link:hover::after,
+.nav__link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+/* Extra links only shown in the mobile menu */
+.nav__extra {
+  display: none;
+}
+
+/* ----- Page hero (category pages) -----
+   Sky → big "RAINYDAYS" → mountain cut-out in front of the text. */
+
+.page-hero {
+  position: relative;
+  height: clamp(360px, 48vw, 680px);
+  overflow: hidden;
+  background-color: var(--color-navy-dark);
+}
+
+.page-hero__layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.page-hero__title {
+  position: absolute;
+  top: 28%;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  font-family: var(--font-family-header);
+  font-size: 18vw;
+  line-height: 0.8;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: var(--color-white);
+}
+
+.page-hero__layer--front {
+  z-index: 2;
+}
+
+/* Soft fade into the white page below */
+.page-hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to bottom, transparent, var(--color-white) 90%);
+}
+
+/* ----- Footer ----- */
+
+.footer {
+  padding: var(--space-80) 0 var(--space-40);
+  background-color: var(--color-white);
+}
+
+.footer__top {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: var(--space-40);
+  margin-bottom: var(--space-64);
+}
+
+.footer__newsletter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-24);
+  max-width: 420px;
+}
+
+.footer__newsletter .input-group {
+  width: 100%;
+}
+
+.footer__heading {
+  margin-bottom: var(--space-24);
+  font-size: var(--fs-28);
+}
+
+.footer__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  font-size: var(--fs-14);
+}
+
+.footer__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-12);
+  transition: color var(--transition-fast);
+}
+
+.footer__link:hover {
+  color: var(--color-ocean);
+}
+
+.footer__link .icon {
+  width: 20px;
+  height: 20px;
+  color: var(--color-navy-dark);
+}
+
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-24);
+  padding-top: var(--space-32);
+  border-top: var(--stroke-1) solid var(--color-ocean);
+  font-size: var(--fs-14);
+  color: var(--color-ocean);
+}
+
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-24);
+}
+
+.footer__legal a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer__legal a:hover {
+  color: var(--color-navy);
+}
+
+/* ==========================================================================
+   Mobile
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .header__inner {
+    gap: var(--space-16);
+  }
+
+  .header__logo {
+    margin-right: auto;
+  }
+
+  .header__toggle {
+    display: block;
+  }
+
+  .header__burger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-navy);
+    color: var(--color-white);
+    cursor: pointer;
+  }
+
+  .header__toggle:focus-visible + .header__burger {
+    outline: 2px solid var(--color-white);
+    outline-offset: 2px;
+  }
+
+  .cart-link {
+    order: 1;
+    padding: var(--space-8);
+  }
+
+  .header__burger {
+    order: 2;
+  }
+
+  /* Full-screen menu, opened with the checkbox (CSS only for now –
+     in the JS stage this becomes a <button> with aria-expanded) */
+  .nav {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    display: none;
+    width: 100%;
+    height: calc(100dvh - var(--header-height));
+    padding: var(--space-40) var(--container-padding);
+    overflow-y: auto;
+    background-color: var(--color-white);
+  }
+
+  .header__toggle:checked ~ .nav {
+    display: block;
+  }
+
+  .nav__list {
+    flex-direction: column;
+    gap: var(--space-24);
+  }
+
+  .nav__link {
+    color: var(--color-navy);
+    font-family: var(--font-family-header);
+    font-size: var(--fs-36);
+    text-shadow: none;
+  }
+
+  .nav__extra {
+    display: block;
+  }
+
+  .page-hero__title {
+    top: 32%;
+    font-size: 20vw;
+  }
+
+  .footer__top {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer__newsletter {
+    grid-column: 1 / -1;
+    max-width: none;
+  }
+
+  .footer__social {
+    grid-column: 1 / -1;
+  }
+
+  .footer__social .footer__list {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .footer__social .icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer__legal {
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+}

@@ -21,9 +21,11 @@
      Use it for large text / decoration; for buttons with white text use --color-green-dark. */
   --color-green: #40916c;
   --color-green-dark: #2d6a4f; /* 6.39:1 with white */
+  --color-green-dark-60: rgba(45, 106, 79, 0.6);
 
   /* ----- Colors: feedback ----- */
   --color-error: #b3261e; /* 6.5:1 with white */
+  --color-error-5: rgba(179, 38, 30, 0.06);
   --color-success: #2d6a4f;
 
   /* ----- Colors: neutrals ----- */
@@ -64,14 +66,18 @@
   --fs-18: 18px;
   --fs-20: 20px;
   --fs-24: 24px;
+  --fs-28: 28px;
   --fs-32: 32px;
   --fs-36: 36px;
   --fs-42: 42px;
   --fs-52: 52px;
   --fs-64: 64px;
+  --fs-80: 80px;
   --fs-90: 90px;
   --fs-200: 200px; /* hero logo text */
 
+  --lh-100: 100%;
+  --lh-110: 110%;
   --lh-120: 120%;
   --lh-140: 140%;
   --lh-150: 150%;
@@ -97,7 +103,9 @@
 
   /* ----- Layout ----- */
   --container-max: 1440px;
+  --container-padding: var(--space-64);
   --content-narrow: 500px;
+  --header-height: 88px;
 
   /* ----- Borders & radius ----- */
   --stroke-1: 1px;
@@ -119,11 +127,15 @@
     --fs-42: 32px;
     --fs-52: 36px;
     --fs-64: 42px;
+    --fs-80: 48px;
     --fs-90: 56px;
     --fs-200: 22vw;
 
     --space-64: 40px;
     --space-80: 48px;
     --space-112: 64px;
+
+    --container-padding: var(--space-20);
+    --header-height: 64px;
   }
 }

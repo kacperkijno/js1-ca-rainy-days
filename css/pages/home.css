@@ -1,0 +1,807 @@
+/* ==========================================================================
+   Home page (index.html)
+   ========================================================================== */
+
+/* ----- Hero -----
+   Three layers: sky → big "RAINYDAYS" (h1) → mountain cut-out in front of it. */
+
+.hero {
+  position: relative;
+  height: clamp(720px, 95vw, 1373px);
+  overflow: hidden;
+  background-color: var(--color-navy-dark);
+}
+
+.hero__layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.hero__title {
+  position: absolute;
+  top: 20%;
+  left: var(--container-padding);
+  z-index: 1;
+  font-size: min(var(--fs-200), 14vw);
+  line-height: 0.8;
+  letter-spacing: 0.08em;
+  color: var(--color-white);
+}
+
+.hero__layer--front {
+  z-index: 2;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to bottom, transparent, var(--color-white) 90%);
+  pointer-events: none;
+}
+
+.hero__content {
+  position: absolute;
+  top: 50%;
+  right: calc(var(--container-padding) + var(--space-80));
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-16);
+  max-width: 450px;
+}
+
+.hero__subtitle {
+  font-size: var(--fs-42);
+  color: var(--color-ocean);
+}
+
+.hero__text {
+  margin-bottom: var(--space-8);
+  color: var(--color-navy);
+}
+
+/* ----- Features (sticky cards stacking on scroll) ----- */
+
+.feature {
+  position: sticky;
+  display: flex;
+  height: 90vh;
+  min-height: 560px;
+  border-top: var(--stroke-1) solid var(--color-black-15);
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+
+/* Each card sticks a bit lower, so the previous label stays visible */
+.feature:nth-child(1) {
+  top: 0;
+}
+
+.feature:nth-child(2) {
+  top: 100px;
+}
+
+.feature:nth-child(3) {
+  top: 200px;
+}
+
+.feature__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--space-32) var(--space-24) var(--space-64) var(--container-padding);
+}
+
+.feature__label {
+  font-family: var(--font-family-header);
+  font-size: var(--fs-32);
+  color: var(--color-ocean);
+}
+
+.feature__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-16);
+  text-align: right;
+}
+
+.feature__text .btn {
+  margin-top: var(--space-24);
+}
+
+.feature__image {
+  flex: 1;
+  width: 50%;
+  object-fit: cover;
+}
+
+/* ----- Bestsellers (product list on the home page) ----- */
+
+.bestsellers {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-64);
+  overflow: hidden;
+}
+
+.bestsellers__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--space-32);
+}
+
+/* Horizontal track with scroll snapping – no scrollbar */
+.bestsellers__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(300px, 1fr);
+  grid-template-columns: repeat(4, minmax(300px, 1fr));
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.bestsellers__track::-webkit-scrollbar {
+  display: none;
+}
+
+.bestsellers__track > .product-card {
+  scroll-snap-align: start;
+}
+
+.bestsellers__controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bestsellers__dots {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.bestsellers__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-grey-300);
+}
+
+.bestsellers__dot--active {
+  background-color: var(--color-navy);
+}
+
+.bestsellers__arrows {
+  display: flex;
+  gap: var(--space-16);
+}
+
+/* ----- Adventure (3 activity cards) ----- */
+
+.adventure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-64);
+}
+
+.adventure__highlight {
+  color: var(--color-green);
+}
+
+.adventure__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.adventure-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background-color: var(--color-black);
+}
+
+.adventure-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-black-50);
+  transition: background-color var(--transition-base);
+}
+
+.adventure-card:hover::after {
+  background-color: var(--color-green-dark-60);
+}
+
+.adventure-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.adventure-card:hover .adventure-card__image {
+  transform: scale(1.05);
+}
+
+.adventure-card__name {
+  position: absolute;
+  right: var(--space-40);
+  bottom: var(--space-40);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-family: var(--font-family-header);
+  font-size: var(--fs-42);
+  letter-spacing: var(--ls-1);
+  text-transform: uppercase;
+  color: var(--color-white);
+  transition: letter-spacing var(--transition-base);
+}
+
+.adventure-card:hover .adventure-card__name {
+  letter-spacing: var(--ls-2);
+}
+
+.adventure-card__name .icon {
+  width: 40px;
+  height: 40px;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-base);
+}
+
+.adventure-card:hover .adventure-card__name .icon {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ----- Collection promo -----
+   The white panel slides away on hover and reveals the photo. */
+
+.collection-promo {
+  position: relative;
+  display: flex;
+  min-height: 890px;
+  overflow: hidden;
+  background-image: url("../../assets/images/collection-autumn.webp");
+  background-position: center;
+  background-size: cover;
+}
+
+.collection-promo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to right, var(--color-black-60), transparent);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.collection-promo:hover::before {
+  opacity: 1;
+}
+
+.collection-promo__panel {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  width: 50%;
+  padding: 0 var(--container-padding);
+}
+
+.collection-promo__panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--color-white);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.collection-promo:hover .collection-promo__panel::before {
+  transform: translateX(-100%);
+}
+
+.collection-promo__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-32);
+  max-width: var(--content-narrow);
+  transition: color 0.6s ease;
+}
+
+.collection-promo:hover .collection-promo__content,
+.collection-promo:hover .eyebrow {
+  color: var(--color-white);
+}
+
+/* ----- Testimonial ----- */
+
+.testimonial__quote {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.testimonial__text {
+  font-size: var(--fs-42);
+  font-weight: var(--fw-500);
+  line-height: var(--lh-120);
+}
+
+.testimonial__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+.testimonial__author {
+  font-style: normal;
+  color: var(--color-grey-600);
+}
+
+/* The video grows to full width while you scroll past it */
+.testimonial__media {
+  position: relative;
+  height: 180vh;
+  view-timeline-name: --testimonial-reveal;
+  view-timeline-axis: block;
+}
+
+.testimonial__sticky {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.testimonial__video {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* ----- Stores (image changes when you hover a store) ----- */
+
+.stores__layout {
+  display: flex;
+  gap: var(--space-80);
+  padding-left: var(--container-padding);
+}
+
+.stores__info {
+  flex: 1;
+  max-width: var(--content-narrow);
+}
+
+.stores__list {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--space-48);
+}
+
+.store {
+  padding: var(--space-24) 0 var(--space-24) var(--space-24);
+  border-left: 2px solid transparent;
+  transition: border-color var(--transition-base);
+}
+
+.store:hover,
+.store:focus-within {
+  border-left-color: var(--color-green);
+}
+
+.store__name {
+  margin-bottom: var(--space-8);
+  transition: color var(--transition-base);
+}
+
+.store:hover .store__name,
+.store:focus-within .store__name {
+  color: var(--color-green-dark);
+}
+
+.store__address {
+  font-style: normal;
+  font-size: var(--fs-14);
+}
+
+.store .text-link {
+  display: inline-block;
+  margin-top: var(--space-8);
+}
+
+.stores__gallery {
+  position: relative;
+  flex: 1.5;
+  min-height: 480px;
+}
+
+.stores__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.stores__image--default {
+  opacity: 1;
+}
+
+.stores__layout:has(.store:hover) .stores__image--default,
+.stores__layout:has(.store:focus-within) .stores__image--default {
+  opacity: 0;
+}
+
+.stores__layout:has(.store--bergen:hover) .stores__image--bergen,
+.stores__layout:has(.store--bergen:focus-within) .stores__image--bergen,
+.stores__layout:has(.store--haugesund:hover) .stores__image--haugesund,
+.stores__layout:has(.store--haugesund:focus-within) .stores__image--haugesund,
+.stores__layout:has(.store--stavanger:hover) .stores__image--stavanger,
+.stores__layout:has(.store--stavanger:focus-within) .stores__image--stavanger {
+  opacity: 1;
+}
+
+/* ----- About us (photo expands, then the text box fades in) ----- */
+
+.about {
+  position: relative;
+  height: 250vh;
+  view-timeline-name: --about-reveal;
+  view-timeline-axis: block;
+}
+
+.about__sticky {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.about__frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.about__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about__card {
+  position: absolute;
+  right: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-24);
+  max-width: var(--content-narrow);
+  padding: var(--space-48);
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-1);
+}
+
+.about__card .btn {
+  align-self: flex-end;
+}
+
+/* ----- Membership ----- */
+
+.membership {
+  position: relative;
+  background-color: var(--color-white);
+}
+
+.membership__image {
+  width: 100%;
+  height: auto;
+  -webkit-mask-image: linear-gradient(to bottom, var(--color-black) 80%, transparent 100%);
+  mask-image: linear-gradient(to bottom, var(--color-black) 80%, transparent 100%);
+}
+
+.membership__content {
+  position: absolute;
+  top: var(--space-112);
+  left: 0;
+  right: 0;
+  z-index: 1;
+  color: var(--color-white);
+}
+
+.membership__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-24);
+  max-width: 600px;
+}
+
+.membership__actions {
+  display: flex;
+  gap: var(--space-16);
+  margin-top: var(--space-16);
+}
+
+/* ----- Scroll-driven animations -----
+   Only in browsers that support them (Chrome, Edge). Everywhere else the
+   video and the about box are simply shown in their final state. */
+
+@supports (animation-timeline: view()) {
+  .testimonial__video {
+    border-radius: var(--radius-20);
+    animation: grow-to-full linear both;
+    animation-timeline: --testimonial-reveal;
+    animation-range: entry 10% cover 50%;
+  }
+
+  .about__frame {
+    animation: grow-to-full linear both;
+    animation-timeline: --about-reveal;
+    animation-range: entry 10% contain 50%;
+  }
+
+  .about__card {
+    animation: fade-up linear both;
+    animation-timeline: --about-reveal;
+    animation-range: contain 45% contain 70%;
+  }
+
+  @keyframes grow-to-full {
+    from {
+      width: 80%;
+      height: 60vh;
+      border-radius: var(--radius-20);
+    }
+
+    to {
+      width: 100%;
+      height: 100vh;
+      border-radius: 0;
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* ==========================================================================
+   Mobile
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .hero {
+    height: 100svh;
+    min-height: 640px;
+  }
+
+  .hero__title {
+    top: 22%;
+    left: 0;
+    width: 100%;
+    font-size: 21vw;
+    text-align: center;
+  }
+
+  .hero__content {
+    top: auto;
+    left: var(--container-padding);
+    right: var(--container-padding);
+    bottom: var(--space-40);
+    max-width: none;
+  }
+
+  .hero__subtitle {
+    font-size: var(--fs-32);
+  }
+
+  .hero__content .btn {
+    width: 100%;
+  }
+
+  .feature {
+    position: relative;
+    top: 0;
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+  }
+
+  .feature:nth-child(n) {
+    top: 0;
+  }
+
+  .feature__content {
+    gap: var(--space-64);
+    padding: var(--space-40) var(--container-padding);
+  }
+
+  .feature__label {
+    font-size: var(--fs-24);
+  }
+
+  .feature__image {
+    width: 100%;
+    height: 360px;
+  }
+
+  .bestsellers__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .bestsellers__track {
+    grid-template-columns: none;
+    grid-auto-columns: 80%;
+  }
+
+  .bestsellers__controls {
+    display: none;
+  }
+
+  .adventure__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .adventure-card {
+    aspect-ratio: 16 / 9;
+  }
+
+  .adventure-card__name {
+    right: var(--space-20);
+    bottom: var(--space-20);
+    font-size: var(--fs-32);
+  }
+
+  /* No hover on touch screens – show the "revealed" version straight away */
+  .collection-promo {
+    align-items: flex-end;
+    min-height: 600px;
+    padding-bottom: var(--space-64);
+  }
+
+  .collection-promo::before {
+    opacity: 1;
+    background: linear-gradient(to top, var(--color-black-80) 0%, transparent 60%);
+  }
+
+  .collection-promo__panel {
+    width: 100%;
+  }
+
+  .collection-promo__panel::before {
+    transform: translateX(-100%);
+  }
+
+  .collection-promo__content,
+  .collection-promo .eyebrow {
+    color: var(--color-white);
+  }
+
+  .testimonial__text {
+    font-size: var(--fs-28);
+  }
+
+  .testimonial__media {
+    height: auto;
+  }
+
+  .testimonial__sticky {
+    position: static;
+    height: auto;
+  }
+
+  .testimonial__video {
+    height: 60vh;
+    animation: none;
+    border-radius: 0;
+  }
+
+  .stores__layout {
+    padding-right: var(--container-padding);
+  }
+
+  .stores__gallery {
+    display: none;
+  }
+
+  .about {
+    height: auto;
+  }
+
+  .about__sticky {
+    position: static;
+    height: auto;
+  }
+
+  .about__frame {
+    flex-direction: column;
+    height: auto;
+    animation: none;
+  }
+
+  .about__image {
+    height: 320px;
+  }
+
+  .about__card {
+    position: static;
+    max-width: none;
+    padding: var(--space-40) var(--container-padding);
+    box-shadow: none;
+    animation: none;
+  }
+
+  .membership {
+    display: flex;
+    min-height: 100svh;
+  }
+
+  .membership__image {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .membership__content {
+    position: relative;
+    top: auto;
+    padding: var(--space-64) 0;
+  }
+
+  .membership__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .membership__actions .btn {
+    width: 100%;
+  }
+}

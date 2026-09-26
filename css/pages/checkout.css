@@ -1,0 +1,288 @@
+/* ==========================================================================
+   Checkout (checkout/index.html) and confirmation (checkout/confirmation/)
+   ========================================================================== */
+
+.checkout-page {
+  padding-top: var(--space-32);
+  padding-bottom: var(--space-80);
+}
+
+.checkout-page .breadcrumbs {
+  margin-bottom: var(--space-32);
+}
+
+.checkout {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--space-64);
+  align-items: start;
+}
+
+/* ----- Form (left column) ----- */
+
+.checkout__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-48);
+}
+
+.checkout__title {
+  margin-bottom: var(--space-8);
+  font-size: var(--fs-64);
+}
+
+.checkout-step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  padding-top: var(--space-32);
+  border-top: var(--stroke-1) solid var(--color-grey-300);
+}
+
+/* <legend> is hard to lay out, so the step heading sits inside it as a flex row */
+.checkout-step__legend {
+  float: left;
+  width: 100%;
+  padding: 0;
+}
+
+.checkout-step__heading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  font-family: var(--font-family-header);
+  font-size: var(--fs-36);
+  line-height: var(--lh-120);
+  text-transform: uppercase;
+}
+
+.checkout-step__fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-24) var(--space-20);
+}
+
+.checkout-step__fields--three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.field--full {
+  grid-column: 1 / -1;
+}
+
+/* ----- Radio options (shipping, payment) ----- */
+
+.option-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  padding: var(--space-20) 0;
+  border-bottom: var(--stroke-1) solid var(--color-grey-300);
+  cursor: pointer;
+}
+
+.option__input {
+  flex-shrink: 0;
+  display: grid;
+  place-content: center;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 4px solid var(--color-black);
+  border-radius: var(--radius-full);
+  appearance: none;
+  cursor: pointer;
+}
+
+.option__input::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-green-dark);
+  transform: scale(0);
+  transition: transform var(--transition-fast);
+}
+
+.option__input:checked {
+  border-color: var(--color-green-dark);
+}
+
+.option__input:checked::after {
+  transform: scale(1);
+}
+
+.option__body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-16);
+  width: 100%;
+}
+
+.option__title {
+  display: block;
+  font-family: var(--font-family-header);
+  font-size: var(--fs-28);
+  line-height: var(--lh-120);
+  text-transform: uppercase;
+  transition: color var(--transition-fast);
+}
+
+.option__description {
+  display: block;
+  font-size: var(--fs-14);
+  letter-spacing: var(--ls-1);
+  text-transform: uppercase;
+}
+
+.option__price {
+  font-family: var(--font-family-header);
+  font-size: var(--fs-24);
+  color: var(--color-grey-600);
+}
+
+.option:has(.option__input:checked) .option__title {
+  color: var(--color-green-dark);
+}
+
+.option__logo {
+  width: auto;
+  height: 16px;
+}
+
+.checkout__actions {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-16);
+}
+
+/* ----- Order summary (right column) ----- */
+
+.summary {
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-24));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.summary__title {
+  padding-bottom: var(--space-16);
+  border-bottom: var(--stroke-1) solid var(--color-grey-300);
+}
+
+.summary__rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding: var(--space-24) 0;
+  border-top: var(--stroke-1) solid var(--color-grey-300);
+  border-bottom: var(--stroke-1) solid var(--color-grey-300);
+}
+
+.summary__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-14);
+  letter-spacing: var(--ls-1);
+  text-transform: uppercase;
+}
+
+.summary__row dd {
+  margin: 0;
+  font-weight: var(--fw-700);
+}
+
+.summary__total {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-family-header);
+  font-size: var(--fs-36);
+  line-height: var(--lh-120);
+  text-transform: uppercase;
+}
+
+.summary__total dd {
+  margin: 0;
+}
+
+/* ----- Confirmation ----- */
+
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-24);
+  max-width: 700px;
+  margin: 0 auto;
+  padding: var(--space-80) 0 var(--space-112);
+  text-align: center;
+}
+
+.confirmation h1 {
+  font-size: var(--fs-52);
+}
+
+.confirmation__icon {
+  width: 64px;
+  height: 64px;
+  color: var(--color-green-dark);
+}
+
+.confirmation__order-number {
+  color: var(--color-ocean);
+  font-weight: var(--fw-600);
+}
+
+.confirmation__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-16);
+  margin-top: var(--space-24);
+}
+
+/* ==========================================================================
+   Mobile
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .checkout {
+    grid-template-columns: 1fr;
+    gap: var(--space-48);
+  }
+
+  /* The cart summary comes first on mobile – you see what you are buying */
+  .summary {
+    position: static;
+    order: -1;
+  }
+
+  .checkout-step__heading {
+    font-size: var(--fs-28);
+  }
+
+  .checkout-step__fields,
+  .checkout-step__fields--three {
+    grid-template-columns: 1fr;
+  }
+
+  .option__title {
+    font-size: var(--fs-24);
+  }
+
+  .checkout__actions {
+    flex-direction: column-reverse;
+  }
+
+  .checkout__actions .btn,
+  .confirmation__actions .btn {
+    width: 100%;
+  }
+}

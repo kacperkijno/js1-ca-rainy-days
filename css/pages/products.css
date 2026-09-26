@@ -1,0 +1,224 @@
+/* ==========================================================================
+   Category pages (category/*.html) – filters + product grid
+   ========================================================================== */
+
+.shop {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-64);
+  padding-top: var(--space-40);
+  padding-bottom: var(--space-80);
+}
+
+/* ----- Toolbar above the grid ----- */
+
+.shop__toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--space-24);
+  margin-bottom: var(--space-32);
+}
+
+.shop__heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.shop__count {
+  font-size: var(--fs-14);
+  color: var(--color-grey-600);
+}
+
+.shop__tools {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.shop__sort {
+  min-width: 200px;
+}
+
+/* "Filters" button + its checkbox – only used on mobile */
+.shop__filters-toggle,
+.shop__filters-btn {
+  display: none;
+}
+
+/* ----- Filters sidebar ----- */
+
+.filters__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--space-16);
+}
+
+.filters__title {
+  font-family: var(--font-family-body);
+  font-size: var(--fs-16);
+  font-weight: var(--fw-500);
+  letter-spacing: var(--ls-1);
+}
+
+.filters__clear {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-grey-600);
+  font-size: var(--fs-12);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.filters__clear:hover {
+  color: var(--color-navy);
+}
+
+.filters__active {
+  padding-bottom: var(--space-20);
+}
+
+.filter-group {
+  padding: var(--space-20) 0;
+  border-top: var(--stroke-1) solid var(--color-grey-200);
+}
+
+.filter-group__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--fs-14);
+  font-weight: var(--fw-500);
+  letter-spacing: var(--ls-1);
+  text-transform: uppercase;
+  cursor: pointer;
+  list-style: none;
+}
+
+.filter-group__header::-webkit-details-marker {
+  display: none;
+}
+
+.filter-group__header .icon {
+  color: var(--color-navy);
+  transition: transform var(--transition-base);
+}
+
+.filter-group[open] .filter-group__header .icon {
+  transform: rotate(180deg);
+}
+
+.filter-group__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding-top: var(--space-16);
+}
+
+.filters__submit {
+  margin-top: var(--space-24);
+}
+
+/* Min / max price in two small inputs */
+.price-range {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+}
+
+/* ----- Product grid ----- */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-48) var(--space-20);
+}
+
+.product-grid .product-card__body {
+  padding: var(--space-16) 0 0;
+}
+
+.shop__pagination {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-16);
+  margin-top: var(--space-64);
+}
+
+/* ==========================================================================
+   Mobile
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .shop {
+    grid-template-columns: 1fr;
+    gap: var(--space-24);
+    padding-top: var(--space-24);
+  }
+
+  .shop__toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .shop__tools {
+    justify-content: flex-end;
+  }
+
+  .shop__sort {
+    min-width: 0;
+  }
+
+  .shop__filters-toggle {
+    display: block;
+  }
+
+  .shop__filters-btn {
+    display: inline-flex;
+  }
+
+  .shop__filters-toggle:focus-visible + .shop__filters-btn {
+    outline: 2px solid var(--color-ocean);
+    outline-offset: 3px;
+  }
+
+  /* Filters are folded away until "Filters" is tapped (checkbox, CSS only) */
+  .filters {
+    display: none;
+    order: -1;
+  }
+
+  .shop:has(.shop__filters-toggle:checked) .filters {
+    display: block;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-32) var(--space-12);
+  }
+
+  /* Mobile card (Figma: product-tile/mobile): heart on the photo, no button */
+  .product-grid .product-card__actions .btn {
+    display: none;
+  }
+
+  .product-grid .wishlist-btn {
+    position: absolute;
+    top: var(--space-8);
+    right: var(--space-8);
+    color: var(--color-white);
+    filter: drop-shadow(0 1px 2px var(--color-black-50));
+  }
+
+  .product-grid .product-card__row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .product-grid .product-card__title {
+    font-size: var(--fs-14);
+  }
+}
