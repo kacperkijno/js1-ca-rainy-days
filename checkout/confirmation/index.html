@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="Thank you for shopping at Rainy Days. Your order has been received."
+>
+    <link
+      rel="canonical"
+      href="https://kacperkijno.github.io/js1-ca-rainy-days/checkout/confirmation/index.html"
+>
+    <link rel="icon" href="../../assets/icons/favicon-32.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Rainy Days">
+    <meta property="og:title" content="Order confirmed | Rainy Days">
+    <meta
+      property="og:description"
+      content="Thank you for shopping at Rainy Days. Your order has been received."
+>
+    <meta
+      property="og:url"
+      content="https://kacperkijno.github.io/js1-ca-rainy-days/checkout/confirmation/index.html"
+>
+    <meta
+      property="og:image"
+      content="https://kacperkijno.github.io/js1-ca-rainy-days/assets/images/hero-mountain.webp"
+>
+    <title>Order confirmed | Rainy Days</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+>
+    <link rel="stylesheet" href="../../css/main.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header class="header header--solid">
+      <div class="container header__inner">
+        <a href="../../index.html" class="logo header__logo">
+          <img
+            src="../../assets/images/logo-rainy-days-mini.png"
+            alt="Rainy Days – go to the home page"
+            width="79"
+            height="43"
+>
+        </a>
+        <input
+          type="checkbox"
+          id="menu-toggle"
+          class="header__toggle visually-hidden"
+          aria-label="Open menu"
+>
+        <label for="menu-toggle" class="header__burger">
+          <span class="icon icon--menu" aria-hidden="true"></span>
+          <span class="visually-hidden">Menu</span>
+        </label>
+        <nav class="nav" aria-label="Main">
+          <ul class="nav__list">
+            <li><a href="../../category/womens.html" class="nav__link">Women</a></li>
+            <li><a href="../../category/mens.html" class="nav__link">Men</a></li>
+            <li><a href="../../index.html#products" class="nav__link">All jackets</a></li>
+            <li><a href="../../index.html#stores" class="nav__link">Stores</a></li>
+            <li class="nav__extra">
+              <a href="../../checkout/index.html" class="nav__link">Cart</a>
+            </li>
+          </ul>
+        </nav>
+        <a href="../../checkout/index.html" class="cart-link">
+          <span class="icon icon--bag icon--sm" aria-hidden="true"></span>
+          <span class="cart-link__text visually-hidden-mobile">Cart</span>
+          <span class="cart-badge" aria-hidden="true">0</span>
+          <span class="visually-hidden">(0 items)</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="main" class="container">
+      <section class="confirmation" aria-labelledby="confirmation-title">
+        <span class="icon icon--check-circle confirmation__icon" aria-hidden="true"></span>
+        <p class="eyebrow">Order complete</p>
+        <h1 id="confirmation-title">Thank you for your order!</h1>
+        <div>
+          <p>Your order is now being processed.</p>
+          <!-- Example number – generated in the JS stage -->
+          <p>
+            Your order number is
+            <span class="confirmation__order-number">RD-25JK8950</span>
+          </p>
+          <p>You will receive an order confirmation by email.</p>
+        </div>
+        <div class="confirmation__actions">
+          <a href="../../index.html" class="btn btn--ghost btn--lg">
+            <span class="icon icon--arrow-up-right" aria-hidden="true"></span>
+            Back to home
+          </a>
+          <a href="../../index.html#products" class="btn btn--accent btn--lg">
+            <span class="icon icon--arrow-up-right" aria-hidden="true"></span>
+            Continue shopping
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__top">
+          <div class="footer__newsletter" id="newsletter">
+            <a href="../../index.html" class="logo logo--large">
+              <img
+                src="../../assets/images/logo-rainy-days.png"
+                alt="Rainy Days – Pushing the Comfort Zone, go to the home page"
+                width="181"
+                height="97"
+>
+            </a>
+            <p>Sign up for our newsletter to stay updated on new products and launches.</p>
+            <form class="input-group" aria-label="Newsletter sign-up">
+              <label for="newsletter-email" class="visually-hidden">Email address</label>
+              <input
+                type="email"
+                id="newsletter-email"
+                name="email"
+                class="field__input"
+                placeholder="Enter your email"
+                autocomplete="email"
+                required
+>
+              <button type="submit" class="btn btn--primary btn--lg">
+                <span class="icon icon--arrow-up-right" aria-hidden="true"></span>
+                Subscribe
+              </button>
+            </form>
+            <p class="field__hint">
+              By subscribing you agree to our
+              <a href="../../privacy.html" class="text-link">privacy policy</a>
+              and consent to receive updates.
+            </p>
+          </div>
+
+          <nav aria-labelledby="footer-shop">
+            <h2 class="footer__heading" id="footer-shop">Shop</h2>
+            <ul class="footer__list">
+              <li><a href="../../category/womens.html" class="footer__link">Women</a></li>
+              <li><a href="../../category/mens.html" class="footer__link">Men</a></li>
+              <li><a href="../../index.html#products" class="footer__link">Bestsellers</a></li>
+              <li><a href="../../checkout/index.html" class="footer__link">Cart</a></li>
+            </ul>
+          </nav>
+
+          <nav aria-labelledby="footer-info">
+            <h2 class="footer__heading" id="footer-info">Info</h2>
+            <ul class="footer__list">
+              <li><a href="../../index.html#about" class="footer__link">About us</a></li>
+              <li><a href="../../index.html#stores" class="footer__link">Stores</a></li>
+              <li><a href="../../index.html#membership" class="footer__link">Membership</a></li>
+            </ul>
+          </nav>
+
+          <div class="footer__social">
+            <h2 class="footer__heading">Follow us</h2>
+            <ul class="footer__list">
+              <li>
+                <a
+                  href="https://www.facebook.com/"
+                  class="footer__link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <span class="icon icon--facebook" aria-hidden="true"></span>
+                  <span class="footer__link-text visually-hidden-mobile">Facebook</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/"
+                  class="footer__link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <span class="icon icon--instagram" aria-hidden="true"></span>
+                  <span class="footer__link-text visually-hidden-mobile">Instagram</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://x.com/" class="footer__link" target="_blank" rel="noopener">
+                  <span class="icon icon--x-logo" aria-hidden="true"></span>
+                  <span class="footer__link-text visually-hidden-mobile">X</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/"
+                  class="footer__link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <span class="icon icon--linkedin" aria-hidden="true"></span>
+                  <span class="footer__link-text visually-hidden-mobile">LinkedIn</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/"
+                  class="footer__link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <span class="icon icon--youtube" aria-hidden="true"></span>
+                  <span class="footer__link-text visually-hidden-mobile">YouTube</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <p>&copy; 2026 Rainy Days. All rights reserved.</p>
+          <ul class="footer__legal">
+            <li><a href="../../privacy.html">Privacy policy</a></li>
+            <li><a href="../../terms.html">Terms and conditions</a></li>
+            <li><a href="../../privacy.html#cookies">Cookie settings</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

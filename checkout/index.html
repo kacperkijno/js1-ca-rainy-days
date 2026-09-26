@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="Review your cart, choose shipping and payment and place your Rainy Days order."
+>
+    <link
+      rel="canonical"
+      href="https://kacperkijno.github.io/js1-ca-rainy-days/checkout/index.html"
+>
+    <link rel="icon" href="../assets/icons/favicon-32.png" type="image/png">
+    <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Rainy Days">
+    <meta property="og:title" content="Checkout | Rainy Days">
+    <meta
+      property="og:description"
+      content="Review your cart, choose shipping and payment and place your Rainy Days order."
+>
+    <meta
+      property="og:url"
+      content="https://kacperkijno.github.io/js1-ca-rainy-days/checkout/index.html"
+>
+    <meta
+      property="og:image"
+      content="https://kacperkijno.github.io/js1-ca-rainy-days/assets/images/hero-mountain.webp"
+>
+    <title>Checkout | Rainy Days</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+>
+    <link rel="stylesheet" href="../css/main.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header class="header header--solid">
+      <div class="container header__inner">
+        <a href="../index.html" class="logo header__logo">
+          <img
+            src="../assets/images/logo-rainy-days-mini.png"
+            alt="Rainy Days – go to the home page"
+            width="79"
+            height="43"
+>
+        </a>
+        <input
+          type="checkbox"
+          id="menu-toggle"
+          class="header__toggle visually-hidden"
+          aria-label="Open menu"
+>
+        <label for="menu-toggle" class="header__burger">
+          <span class="icon icon--menu" aria-hidden="true"></span>
+          <span class="visually-hidden">Menu</span>
+        </label>
+        <nav class="nav" aria-label="Main">
+          <ul class="nav__list">
+            <li><a href="../category/womens.html" class="nav__link">Women</a></li>
+            <li><a href="../category/mens.html" class="nav__link">Men</a></li>
+            <li><a href="../index.html#products" class="nav__link">All jackets</a></li>
+            <li><a href="../index.html#stores" class="nav__link">Stores</a></li>
+            <li class="nav__extra"><a href="../checkout/index.html" class="nav__link">Cart</a></li>
+          </ul>
+        </nav>
+        <a href="../checkout/index.html" class="cart-link">
+          <span class="icon icon--bag icon--sm" aria-hidden="true"></span>
+          <span class="cart-link__text visually-hidden-mobile">Cart</span>
+          <span class="cart-badge" aria-hidden="true">0</span>
+          <span class="visually-hidden">(0 items)</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="main" class="container checkout-page">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol class="breadcrumbs__list">
+          <li class="breadcrumbs__item">
+            <a href="../index.html" class="breadcrumbs__link">Home</a>
+          </li>
+          <li class="breadcrumbs__item" aria-current="page">Checkout</li>
+        </ol>
+      </nav>
+
+      <div class="checkout">
+        <!-- Without JS the form simply opens the confirmation page.
+             In the JS stage: validation, clearing the cart, then redirect. -->
+        <form class="checkout__form" id="checkout-form" action="confirmation/index.html">
+          <h1 class="checkout__title">Checkout</h1>
+
+          <fieldset class="checkout-step">
+            <legend class="checkout-step__legend">
+              <span class="checkout-step__heading">
+                <span class="step-number" aria-hidden="true">1</span>
+                Contact &amp; address
+              </span>
+            </legend>
+            <div class="checkout-step__fields">
+              <div class="field field--full">
+                <label for="email" class="field__label">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="field__input"
+                  autocomplete="email"
+                  placeholder="name@example.com"
+                  required
+>
+              </div>
+              <div class="field field--full">
+                <label for="phone" class="field__label">Phone</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="field__input"
+                  autocomplete="tel"
+                  placeholder="+47 000 00 000"
+                  required
+>
+              </div>
+              <div class="field">
+                <label for="first-name" class="field__label">First name</label>
+                <input
+                  type="text"
+                  id="first-name"
+                  name="first-name"
+                  class="field__input"
+                  autocomplete="given-name"
+                  required
+>
+              </div>
+              <div class="field">
+                <label for="last-name" class="field__label">Last name</label>
+                <input
+                  type="text"
+                  id="last-name"
+                  name="last-name"
+                  class="field__input"
+                  autocomplete="family-name"
+                  required
+>
+              </div>
+              <div class="field field--full">
+                <label for="address" class="field__label">Address</label>
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  class="field__input"
+                  autocomplete="address-line1"
+                  required
+>
+              </div>
+              <div class="field">
+                <label for="postcode" class="field__label">Postcode</label>
+                <input
+                  type="text"
+                  id="postcode"
+                  name="postcode"
+                  class="field__input"
+                  autocomplete="postal-code"
+                  required
+>
+              </div>
+              <div class="field">
+                <label for="city" class="field__label">City</label>
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  class="field__input"
+                  autocomplete="address-level2"
+                  required
+>
+              </div>
+              <label class="checkbox field--full">
+                <input type="checkbox" name="newsletter" class="checkbox__input">
+                Send me news and offers
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="checkout-step">
+            <legend class="checkout-step__legend">
+              <span class="checkout-step__heading">
+                <span class="step-number" aria-hidden="true">2</span>
+                Shipping
+              </span>
+            </legend>
+            <div class="option-list">
+              <label class="option">
+                <input
+                  type="radio"
+                  name="shipping"
+                  value="standard"
+                  class="option__input"
+                  checked
+                  required
+>
+                <span class="option__body">
+                  <span>
+                    <span class="option__title">Free shipping</span>
+                    <span class="option__description">Delivery in 5–7 working days</span>
+                  </span>
+                  <span class="option__price">$0</span>
+                </span>
+              </label>
+              <label class="option">
+                <input
+                  type="radio"
+                  name="shipping"
+                  value="express"
+                  class="option__input"
+                  required
+>
+                <span class="option__body">
+                  <span>
+                    <span class="option__title">Express</span>
+                    <span class="option__description">Delivery in 1–2 working days</span>
+                  </span>
+                  <span class="option__price">$15</span>
+                </span>
+              </label>
+              <label class="option">
+                <input type="radio" name="shipping" value="pickup" class="option__input" required>
+                <span class="option__body">
+                  <span>
+                    <span class="option__title">Pick up in store</span>
+                    <span class="option__description">Bergen, Haugesund or Stavanger</span>
+                  </span>
+                  <span class="option__price">$0</span>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="checkout-step">
+            <legend class="checkout-step__legend">
+              <span class="checkout-step__heading">
+                <span class="step-number" aria-hidden="true">3</span>
+                Payment
+              </span>
+            </legend>
+            <div class="option-list">
+              <label class="option">
+                <input
+                  type="radio"
+                  name="payment"
+                  value="card"
+                  class="option__input"
+                  checked
+                  required
+>
+                <span class="option__body">
+                  <span>
+                    <span class="option__title">Card</span>
+                  </span>
+                  <img
+                    src="../assets/images/payment-card.png"
+                    alt=""
+                    class="option__logo"
+                    height="16"
+>
+                </span>
+              </label>
+              <label class="option">
+                <input type="radio" name="payment" value="vipps" class="option__input" required>
+                <span class="option__body">
+                  <span>
+                    <span class="option__title">Vipps</span>
+                  </span>
+                  <img
+                    src="../assets/images/payment-vipps.png"
+                    alt=""
+                    class="option__logo"
+                    height="16"
+>
+                </span>
+              </label>
+              <label class="option">
+                <input type="radio" name="payment" value="klarna" class="option__input" required>
+                <span class="option__body">
+                  <span>
+                    <span class="option__title">Klarna</span>
+                  </span>
+                  <img
+                    src="../assets/images/payment-klarna.png"
+                    alt=""
+                    class="option__logo"
+                    height="16"
+>
+                </span>
+              </label>
+              <label class="option">
+                <input type="radio" name="payment" value="paypal" class="option__input" required>
+                <span class="option__body">
+                  <span>
+                    <span class="option__title">PayPal</span>
+                  </span>
+                  <img
+                    src="../assets/images/payment-paypal.png"
+                    alt=""
+                    class="option__logo"
+                    height="16"
+>
+                </span>
+              </label>
+            </div>
+            <div class="checkout-step__fields">
+              <div class="field field--full">
+                <label for="card-number" class="field__label">Card number</label>
+                <input
+                  type="text"
+                  id="card-number"
+                  name="card-number"
+                  class="field__input"
+                  autocomplete="cc-number"
+                  placeholder="1234 5678 9012 3456"
+                  inputmode="numeric"
+                  required
+>
+              </div>
+              <div class="field field--full">
+                <label for="card-name" class="field__label">Name on card</label>
+                <input
+                  type="text"
+                  id="card-name"
+                  name="card-name"
+                  class="field__input"
+                  autocomplete="cc-name"
+                  required
+>
+              </div>
+              <div class="field">
+                <label for="card-expiry" class="field__label">Expiry date</label>
+                <input
+                  type="text"
+                  id="card-expiry"
+                  name="card-expiry"
+                  class="field__input"
+                  autocomplete="cc-exp"
+                  placeholder="MM/YY"
+                  required
+>
+              </div>
+              <div class="field">
+                <label for="card-cvc" class="field__label">CVC</label>
+                <input
+                  type="text"
+                  id="card-cvc"
+                  name="card-cvc"
+                  class="field__input"
+                  autocomplete="cc-csc"
+                  placeholder="123"
+                  inputmode="numeric"
+                  required
+>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="checkout__actions">
+            <a href="../index.html#products" class="btn btn--ghost btn--lg">
+              <span class="icon icon--arrow-left" aria-hidden="true"></span>
+              Continue shopping
+            </a>
+            <button type="submit" class="btn btn--accent btn--lg">
+              <span class="icon icon--arrow-up-right" aria-hidden="true"></span>
+              Place order
+            </button>
+          </div>
+        </form>
+
+        <!-- Example cart – in the JS stage the items come from the cart in localStorage,
+             with an empty-cart message when there is nothing in it -->
+        <aside class="summary" aria-labelledby="summary-title">
+          <h2 class="summary__title" id="summary-title">Your cart</h2>
+          <ul class="summary__items">
+            <li class="cart-item">
+              <img
+                src="../assets/images/placeholder-jacket-detail-2.webp"
+                alt="Grey hooded parka seen from the front."
+                class="cart-item__image"
+                width="992"
+                height="1056"
+>
+              <div class="cart-item__body">
+                <div class="cart-item__header">
+                  <h3 class="cart-item__title">City Down Hooded Parka</h3>
+                  <p class="cart-item__price">$129.99</p>
+                </div>
+                <p class="cart-item__meta">Colour: Gray · Size: M</p>
+                <div class="cart-item__footer">
+                  <div
+                    class="quantity"
+                    role="group"
+                    aria-label="Quantity of City Down Hooded Parka"
+                  >
+                    <button type="button" class="quantity__btn" aria-label="Decrease quantity">
+                      <span class="icon icon--minus icon--sm" aria-hidden="true"></span>
+                    </button>
+                    <output class="quantity__value">1</output>
+                    <button type="button" class="quantity__btn" aria-label="Increase quantity">
+                      <span class="icon icon--plus icon--sm" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                  <button
+                    type="button"
+                    class="cart-item__remove"
+                    aria-label="Remove City Down Hooded Parka from cart"
+                  >
+                    <span class="icon icon--trash icon--sm" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li class="cart-item">
+              <img
+                src="../assets/images/placeholder-jacket-detail-4.webp"
+                alt="Grey hooded parka worn open over a dark sweater."
+                class="cart-item__image"
+                width="992"
+                height="1056"
+>
+              <div class="cart-item__body">
+                <div class="cart-item__header">
+                  <h3 class="cart-item__title">City Down Hooded Parka</h3>
+                  <p class="cart-item__price">$129.99</p>
+                </div>
+                <p class="cart-item__meta">Colour: Gray · Size: L</p>
+                <div class="cart-item__footer">
+                  <div
+                    class="quantity"
+                    role="group"
+                    aria-label="Quantity of City Down Hooded Parka"
+                  >
+                    <button type="button" class="quantity__btn" aria-label="Decrease quantity">
+                      <span class="icon icon--minus icon--sm" aria-hidden="true"></span>
+                    </button>
+                    <output class="quantity__value">1</output>
+                    <button type="button" class="quantity__btn" aria-label="Increase quantity">
+                      <span class="icon icon--plus icon--sm" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                  <button
+                    type="button"
+                    class="cart-item__remove"
+                    aria-label="Remove City Down Hooded Parka from cart"
+                  >
+                    <span class="icon icon--trash icon--sm" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <div class="field">
+            <label for="discount-code" class="field__label">Discount code</label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="discount-code"
+                name="discount"
+                class="field__input"
+                form="checkout-form"
+                placeholder="Enter code"
+>
+              <button type="button" class="btn btn--accent btn--sm">Apply</button>
+            </div>
+          </div>
+
+          <dl class="summary__rows">
+            <div class="summary__row">
+              <dt>Subtotal</dt>
+              <dd>$259.98</dd>
+            </div>
+            <div class="summary__row">
+              <dt>Shipping</dt>
+              <dd>$0.00</dd>
+            </div>
+            <div class="summary__row">
+              <dt>Incl. VAT (25%)</dt>
+              <dd>$52.00</dd>
+            </div>
+          </dl>
+
+          <dl class="summary__total">
+            <dt>Total</dt>
+            <dd>$259.98</dd>
+          </dl>
+
+          <button type="submit" form="checkout-form" class="btn btn--accent btn--lg btn--full">
+            <span class="icon icon--arrow-up-right" aria-hidden="true"></span>
+            Place order
+          </button>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__top">
+          <div class="footer__newsletter" id="newsletter">
+            <a href="../index.html" class="logo logo--large">
+              <img
+                src="../assets/images/logo-rainy-days.png"
+                alt="Rainy Days – Pushing the Comfort Zone, go to the home page"
+                width="181"
+                height="97"
+>
+            </a>
+            <p>Sign up for our newsletter to stay updated on new products and launches.</p>
+            <form class="input-group" aria-label="Newsletter sign-up">
+              <label for="newsletter-email" class="visually-hidden">Email address</label>
+              <input
+                type="email"
+                id="newsletter-email"
+                name="email"
+                class="field__input"
+                placeholder="Enter your email"
+                autocomplete="email"
+                required
+>
+              <button type="submit" class="btn btn--primary btn--lg">
+                <span class="icon icon--arrow-up-right" aria-hidden="true"></span>
+                Subscribe
+              </button>
+            </form>
+            <p class="field__hint">
+              By subscribing you agree to our
+              <a href="../privacy.html" class="text-link">privacy policy</a>
+              and consent to receive updates.
+            </p>
+          </div>
+
+          <nav aria-labelledby="footer-shop">
+            <h2 class="footer__heading" id="footer-shop">Shop</h2>
+            <ul class="footer__list">
+              <li><a href="../category/womens.html" class="footer__link">Women</a></li>
+              <li><a href="../category/mens.html" class="footer__link">Men</a></li>
+              <li><a href="../index.html#products" class="footer__link">Bestsellers</a></li>
+              <li><a href="../checkout/index.html" class="footer__link">Cart</a></li>
+            </ul>
+          </nav>
+
+          <nav aria-labelledby="footer-info">
+            <h2 class="footer__heading" id="footer-info">Info</h2>
+            <ul class="footer__list">
+              <li><a href="../index.html#about" class="footer__link">About us</a></li>
+              <li><a href="../index.html#stores" class="footer__link">Stores</a></li>
+              <li><a href="../index.html#membership" class="footer__link">Membership</a></li>
+            </ul>
+          </nav>
+
+          <div class="footer__social">
+            <h2 class="footer__heading">Follow us</h2>
+            <ul class="footer__list">
+              <li>
+                <a
+                  href="https://www.facebook.com/"
+                  class="footer__link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <span class="icon icon--facebook" aria-hidden="true"></span>
+                  <span class="footer__link-text visually-hidden-mobile">Facebook</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/"
+                  class="footer__link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <span class="icon icon--instagram" aria-hidden="true"></span>
+                  <span class="footer__link-text visually-hidden-mobile">Instagram</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://x.com/" class="footer__link" target="_blank" rel="noopener">
+                  <span class="icon icon--x-logo" aria-hidden="true"></span>
+                  <span class="footer__link-text visually-hidden-mobile">X</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/"
+                  class="footer__link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <span class="icon icon--linkedin" aria-hidden="true"></span>
+                  <span class="footer__link-text visually-hidden-mobile">LinkedIn</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/"
+                  class="footer__link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <span class="icon icon--youtube" aria-hidden="true"></span>
+                  <span class="footer__link-text visually-hidden-mobile">YouTube</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <p>&copy; 2026 Rainy Days. All rights reserved.</p>
+          <ul class="footer__legal">
+            <li><a href="../privacy.html">Privacy policy</a></li>
+            <li><a href="../terms.html">Terms and conditions</a></li>
+            <li><a href="../privacy.html#cookies">Cookie settings</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
