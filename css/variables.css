@@ -22,7 +22,9 @@
   --color-green: #40916c;
   --color-green-dark: #2d6a4f; /* 6.39:1 with white */
 
-  --color-success: rgba(4, 217, 57, 0.5);
+  /* ----- Colors: feedback ----- */
+  --color-error: #b3261e; /* 6.5:1 with white */
+  --color-success: #2d6a4f;
 
   /* ----- Colors: neutrals ----- */
   --color-black: #000000;
@@ -46,9 +48,10 @@
   --color-grey-600: #666666; /* 5.74:1 on white */
 
   /* ----- Typography ----- */
-  --font-family-body: "din-1451-lt-pro", "Inter", "Helvetica Neue", Arial, sans-serif;
-  --font-family-header: "Bebas Neue", "Impact", "Arial Narrow", sans-serif;
-  --font-family-ui: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+  /* Google Fonts: Bebas Neue (headings, nav, product names) + Barlow (body, UI) –
+     Barlow replaces the paid DIN 1451 (Typekit) used in the HTML & CSS version */
+  --font-family-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --font-family-header: "Bebas Neue", "Arial Narrow", sans-serif;
 
   --fw-400: 400;
   --fw-500: 500;
@@ -99,6 +102,7 @@
   /* ----- Borders & radius ----- */
   --stroke-1: 1px;
   --radius-0: 0;
+  --radius-4: 4px;
   --radius-20: 20px;
   --radius-full: 9999px;
 
