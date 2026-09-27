@@ -1,35 +1,36 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
       content="Rainy Days makes technical jackets for rain, snow and wind. Explore our bestsellers for women and men and find your next layer for the outdoors."
->
-    <link rel="canonical" href="https://kacperkijno.github.io/js1-ca-rainy-days/">
-    <link rel="icon" href="assets/icons/favicon-32.png" type="image/png">
-    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Rainy Days">
-    <meta property="og:title" content="Rainy Days | Technical outdoor jackets for rough weather">
+    />
+    <link rel="canonical" href="https://kacperkijno.github.io/js1-ca-rainy-days/" />
+    <link rel="icon" href="assets/icons/favicon-32.png" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Rainy Days" />
+    <meta property="og:title" content="Rainy Days | Technical outdoor jackets for rough weather" />
     <meta
       property="og:description"
       content="Rainy Days makes technical jackets for rain, snow and wind. Explore our bestsellers for women and men and find your next layer for the outdoors."
->
-    <meta property="og:url" content="https://kacperkijno.github.io/js1-ca-rainy-days/">
+    />
+    <meta property="og:url" content="https://kacperkijno.github.io/js1-ca-rainy-days/" />
     <meta
       property="og:image"
       content="https://kacperkijno.github.io/js1-ca-rainy-days/assets/images/hero-mountain.webp"
->
+    />
     <title>Rainy Days | Technical outdoor jackets for rough weather</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Bebas+Neue&display=swap"
       rel="stylesheet"
->
-    <link rel="stylesheet" href="css/main.css">
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <script type="module" src="js/pages/home.js"></script>
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to content</a>
@@ -41,14 +42,14 @@
             alt="Rainy Days – go to the home page"
             width="79"
             height="43"
->
+          />
         </a>
         <input
           type="checkbox"
           id="menu-toggle"
           class="header__toggle visually-hidden"
           aria-label="Open menu"
->
+        />
         <label for="menu-toggle" class="header__burger">
           <span class="icon icon--menu" aria-hidden="true"></span>
           <span class="visually-hidden">Menu</span>
@@ -79,7 +80,7 @@
           class="hero__layer"
           width="1440"
           height="1373"
->
+        />
         <h1 class="hero__title" id="hero-title">Rainydays</h1>
         <img
           src="assets/images/hero-mountain.webp"
@@ -87,7 +88,7 @@
           class="hero__layer hero__layer--front"
           width="1440"
           height="1373"
->
+        />
         <div class="hero__content">
           <h2 class="hero__subtitle">Pushing the comfort zone</h2>
           <p class="hero__text">
@@ -122,7 +123,7 @@
             width="1024"
             height="1024"
             loading="lazy"
->
+          />
         </article>
 
         <article class="feature">
@@ -144,7 +145,7 @@
             width="1024"
             height="1024"
             loading="lazy"
->
+          />
         </article>
 
         <article class="feature">
@@ -166,7 +167,7 @@
             width="1408"
             height="736"
             loading="lazy"
->
+          />
         </article>
       </section>
 
@@ -189,260 +190,9 @@
         </div>
 
         <div class="container">
-          <!-- Example cards – in the JS stage this list is rendered from the Rainy Days API -->
-          <div class="bestsellers__track">
-            <article class="product-card">
-              <div class="product-card__image-wrapper">
-                <img
-                  src="assets/images/placeholder-jacket-1.webp"
-                  alt="Man wearing a grey softshell jacket with a high collar, zipped up."
-                  class="product-card__image"
-                  width="400"
-                  height="500"
-                  loading="lazy"
->
-              </div>
-              <div class="product-card__body">
-                <div class="product-card__row">
-                  <h3 class="product-card__title">
-                    <a href="product/index.html" class="product-card__link">Storm Seeker</a>
-                  </h3>
-                  <p class="price"><span class="price__current">$129.99</span></p>
-                </div>
-                <p class="product-card__category">Men's jacket</p>
-                <div class="product-card__actions">
-                  <button
-                    type="button"
-                    class="wishlist-btn"
-                    aria-label="Add Storm Seeker to wishlist"
-                  >
-                    <span class="icon icon--heart" aria-hidden="true"></span>
-                  </button>
-                  <a
-                    href="product/index.html"
-                    class="btn btn--ghost btn--sm"
-                    tabindex="-1"
-                    aria-hidden="true"
-                  >
-                    <span class="icon icon--arrow-up-right" aria-hidden="true"></span>
-                    Read more
-                  </a>
-                </div>
-              </div>
-            </article>
+          <div id="products-status">Loading jackets...</div>
 
-            <article class="product-card">
-              <div class="product-card__image-wrapper">
-                <img
-                  src="assets/images/placeholder-jacket-2.webp"
-                  alt="Woman wearing a light grey and orange technical jacket with black sleeves and a hood."
-                  class="product-card__image"
-                  width="400"
-                  height="500"
-                  loading="lazy"
->
-                <span class="product-card__badge">Sale</span>
-              </div>
-              <div class="product-card__body">
-                <div class="product-card__row">
-                  <h3 class="product-card__title">
-                    <a href="product/index.html" class="product-card__link">Arctic Flow</a>
-                  </h3>
-                  <p class="price price--sale">
-                    <span class="visually-hidden">Sale price</span>
-                    <span class="price__current">$129.99</span>
-                    <span class="visually-hidden">Original price</span>
-                    <s class="price__old">$149.99</s>
-                  </p>
-                </div>
-                <p class="product-card__category">Women's jacket</p>
-                <div class="product-card__actions">
-                  <button
-                    type="button"
-                    class="wishlist-btn"
-                    aria-label="Add Arctic Flow to wishlist"
-                  >
-                    <span class="icon icon--heart" aria-hidden="true"></span>
-                  </button>
-                  <a
-                    href="product/index.html"
-                    class="btn btn--ghost btn--sm"
-                    tabindex="-1"
-                    aria-hidden="true"
-                  >
-                    <span class="icon icon--arrow-up-right" aria-hidden="true"></span>
-                    Read more
-                  </a>
-                </div>
-              </div>
-            </article>
-
-            <article class="product-card">
-              <div class="product-card__image-wrapper">
-                <img
-                  src="assets/images/placeholder-jacket-3.webp"
-                  alt="Woman wearing a black lightweight rain jacket with a small blue logo on the chest."
-                  class="product-card__image"
-                  width="400"
-                  height="500"
-                  loading="lazy"
->
-              </div>
-              <div class="product-card__body">
-                <div class="product-card__row">
-                  <h3 class="product-card__title">
-                    <a href="product/index.html" class="product-card__link">Nordic Breeze</a>
-                  </h3>
-                  <p class="price"><span class="price__current">$109.99</span></p>
-                </div>
-                <p class="product-card__category">Women's jacket</p>
-                <div class="product-card__actions">
-                  <button
-                    type="button"
-                    class="wishlist-btn"
-                    aria-label="Add Nordic Breeze to wishlist"
-                  >
-                    <span class="icon icon--heart" aria-hidden="true"></span>
-                  </button>
-                  <a
-                    href="product/index.html"
-                    class="btn btn--ghost btn--sm"
-                    tabindex="-1"
-                    aria-hidden="true"
-                  >
-                    <span class="icon icon--arrow-up-right" aria-hidden="true"></span>
-                    Read more
-                  </a>
-                </div>
-              </div>
-            </article>
-
-            <article class="product-card">
-              <div class="product-card__image-wrapper">
-                <img
-                  src="assets/images/placeholder-jacket-4.webp"
-                  alt="Man wearing a red shell jacket with black side panels."
-                  class="product-card__image"
-                  width="400"
-                  height="500"
-                  loading="lazy"
->
-              </div>
-              <div class="product-card__body">
-                <div class="product-card__row">
-                  <h3 class="product-card__title">
-                    <a href="product/index.html" class="product-card__link">Peak Explorer</a>
-                  </h3>
-                  <p class="price"><span class="price__current">$139.99</span></p>
-                </div>
-                <p class="product-card__category">Men's jacket</p>
-                <div class="product-card__actions">
-                  <button
-                    type="button"
-                    class="wishlist-btn"
-                    aria-label="Add Peak Explorer to wishlist"
-                  >
-                    <span class="icon icon--heart" aria-hidden="true"></span>
-                  </button>
-                  <a
-                    href="product/index.html"
-                    class="btn btn--ghost btn--sm"
-                    tabindex="-1"
-                    aria-hidden="true"
-                  >
-                    <span class="icon icon--arrow-up-right" aria-hidden="true"></span>
-                    Read more
-                  </a>
-                </div>
-              </div>
-            </article>
-
-            <article class="product-card">
-              <div class="product-card__image-wrapper">
-                <img
-                  src="assets/images/placeholder-jacket-5.webp"
-                  alt="Man wearing an olive green fleece jacket over a black t-shirt."
-                  class="product-card__image"
-                  width="400"
-                  height="500"
-                  loading="lazy"
->
-                <span class="product-card__badge">Sale</span>
-              </div>
-              <div class="product-card__body">
-                <div class="product-card__row">
-                  <h3 class="product-card__title">
-                    <a href="product/index.html" class="product-card__link">Mist Layer</a>
-                  </h3>
-                  <p class="price price--sale">
-                    <span class="visually-hidden">Sale price</span>
-                    <span class="price__current">$89.99</span>
-                    <span class="visually-hidden">Original price</span>
-                    <s class="price__old">$99.99</s>
-                  </p>
-                </div>
-                <p class="product-card__category">Men's jacket</p>
-                <div class="product-card__actions">
-                  <button
-                    type="button"
-                    class="wishlist-btn"
-                    aria-label="Add Mist Layer to wishlist"
-                  >
-                    <span class="icon icon--heart" aria-hidden="true"></span>
-                  </button>
-                  <a
-                    href="product/index.html"
-                    class="btn btn--ghost btn--sm"
-                    tabindex="-1"
-                    aria-hidden="true"
-                  >
-                    <span class="icon icon--arrow-up-right" aria-hidden="true"></span>
-                    Read more
-                  </a>
-                </div>
-              </div>
-            </article>
-
-            <article class="product-card">
-              <div class="product-card__image-wrapper">
-                <img
-                  src="assets/images/placeholder-jacket-6.webp"
-                  alt="Man wearing a black jacket with white and yellow reflective stripes."
-                  class="product-card__image"
-                  width="400"
-                  height="500"
-                  loading="lazy"
->
-              </div>
-              <div class="product-card__body">
-                <div class="product-card__row">
-                  <h3 class="product-card__title">
-                    <a href="product/index.html" class="product-card__link">Sky Sentinel</a>
-                  </h3>
-                  <p class="price"><span class="price__current">$179.99</span></p>
-                </div>
-                <p class="product-card__category">Men's jacket</p>
-                <div class="product-card__actions">
-                  <button
-                    type="button"
-                    class="wishlist-btn"
-                    aria-label="Add Sky Sentinel to wishlist"
-                  >
-                    <span class="icon icon--heart" aria-hidden="true"></span>
-                  </button>
-                  <a
-                    href="product/index.html"
-                    class="btn btn--ghost btn--sm"
-                    tabindex="-1"
-                    aria-hidden="true"
-                  >
-                    <span class="icon icon--arrow-up-right" aria-hidden="true"></span>
-                    Read more
-                  </a>
-                </div>
-              </div>
-            </article>
-          </div>
+          <div id="product-list" class="bestsellers__track"></div>
         </div>
 
         <div class="container bestsellers__controls">
@@ -477,7 +227,7 @@
               width="1408"
               height="736"
               loading="lazy"
->
+            />
             <span class="adventure-card__name">
               Ski
               <span class="icon icon--arrow-right" aria-hidden="true"></span>
@@ -491,7 +241,7 @@
               width="1408"
               height="736"
               loading="lazy"
->
+            />
             <span class="adventure-card__name">
               Hiking
               <span class="icon icon--arrow-right" aria-hidden="true"></span>
@@ -505,7 +255,7 @@
               width="1408"
               height="736"
               loading="lazy"
->
+            />
             <span class="adventure-card__name">
               Kayaking
               <span class="icon icon--arrow-right" aria-hidden="true"></span>
@@ -558,7 +308,7 @@
               poster="assets/images/testimonial-ski-slope.webp"
               aria-label="Skier going down a sunny, snow-covered mountain slope."
             >
-              <source src="assets/images/testimonial-ski-slope.webm" type="video/webm">
+              <source src="assets/images/testimonial-ski-slope.webm" type="video/webm" />
             </video>
           </div>
         </div>
@@ -625,7 +375,7 @@
               width="1408"
               height="736"
               loading="lazy"
->
+            />
             <img
               src="assets/images/store-bergen.webp"
               alt="The Rainy Days store in Bergen."
@@ -633,7 +383,7 @@
               width="1408"
               height="736"
               loading="lazy"
->
+            />
             <img
               src="assets/images/store-haugesund.webp"
               alt="The Rainy Days store in Haugesund."
@@ -641,7 +391,7 @@
               width="1408"
               height="736"
               loading="lazy"
->
+            />
             <img
               src="assets/images/store-stavanger.webp"
               alt="The Rainy Days store in Stavanger."
@@ -649,7 +399,7 @@
               width="1408"
               height="736"
               loading="lazy"
->
+            />
           </div>
         </div>
       </section>
@@ -664,7 +414,7 @@
               width="1408"
               height="736"
               loading="lazy"
->
+            />
             <div class="about__card">
               <p class="eyebrow">About us</p>
               <h2 id="about-title">Passionate about the outdoors since day one</h2>
@@ -690,7 +440,7 @@
           width="1440"
           height="1920"
           loading="lazy"
->
+        />
         <div class="container membership__content">
           <div class="membership__text">
             <p class="eyebrow eyebrow--light">Membership</p>
@@ -725,7 +475,7 @@
                 alt="Rainy Days – Pushing the Comfort Zone, go to the home page"
                 width="181"
                 height="97"
->
+              />
             </a>
             <p>Sign up for our newsletter to stay updated on new products and launches.</p>
             <form class="input-group" aria-label="Newsletter sign-up">
@@ -738,7 +488,7 @@
                 placeholder="Enter your email"
                 autocomplete="email"
                 required
->
+              />
               <button type="submit" class="btn btn--primary btn--lg">
                 <span class="icon icon--arrow-up-right" aria-hidden="true"></span>
                 Subscribe

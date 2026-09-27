@@ -76,6 +76,8 @@ fieldset {
   border: 0;
 }
 
+.is-hidden { display: none; }
+
 /* ----- Typography ----- */
 
 h1,
