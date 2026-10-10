@@ -141,13 +141,6 @@
   padding: var(--space-16) 0 0;
 }
 
-.shop__pagination {
-  display: flex;
-  justify-content: flex-end;
-  gap: var(--space-16);
-  margin-top: var(--space-64);
-}
-
 /* ==========================================================================
    Mobile
    ========================================================================== */
@@ -200,11 +193,7 @@
     gap: var(--space-32) var(--space-12);
   }
 
-  /* Mobile card (Figma: product-tile/mobile): heart on the photo, no button */
-  .product-grid .product-card__actions .btn {
-    display: none;
-  }
-
+  /* Mobile card (Figma: product-tile/mobile): heart on the photo */
   .product-grid .wishlist-btn {
     position: absolute;
     top: var(--space-8);

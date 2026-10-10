@@ -1,8 +1,11 @@
 import { getProducts } from "../api.js";
 import { createProductCard } from "../render.js";
+import { addToCart, updateCartBadge } from "../cart.js";
 
 const productList = document.querySelector("#product-list");
 const status = document.querySelector("#products-status");
+
+updateCartBadge();
 
 function setupSlider(track) {
   const arrows = document.querySelectorAll(".bestsellers__arrows .arrow-btn");
@@ -36,6 +39,56 @@ function setupSlider(track) {
   updateButtons();
 }
 
+function renderProducts(products) {
+  productList.innerHTML = "";
+
+  products.forEach((product) => {
+    const card = createProductCard(product, "");
+    productList.appendChild(card);
+  });
+}
+
+function setupFilter(products) {
+  const chipList = document.querySelector(".chip-list");
+  const chips = document.querySelectorAll(".chip");
+
+  chipList.addEventListener("click", (event) => {
+    if (!event.target.classList.contains("chip")) {
+      return;
+    }
+
+    chips.forEach((chip) => {
+      chip.setAttribute("aria-pressed", "false");
+    });
+    event.target.setAttribute("aria-pressed", "true");
+
+    const gender = event.target.dataset.gender;
+
+    if (gender) {
+      const filteredProducts = products.filter((product) => product.gender === gender);
+      renderProducts(filteredProducts);
+    } else {
+      renderProducts(products);
+    }
+  });
+}
+
+function setupAddToCart(products) {
+  productList.addEventListener("click", (event) => {
+    const button = event.target.closest(".add-to-cart");
+    if (!button) {
+      return;
+    }
+
+    const productId = button.dataset.id;
+    const product = products.find((p) => p.id === productId);
+
+    if (product) {
+      addToCart(product);
+    }
+  });
+}
+
 async function initHomePage() {
   try {
     const products = await getProducts();
@@ -45,13 +98,11 @@ async function initHomePage() {
       return;
     }
 
-    products.forEach((product) => {
-      const card = createProductCard(product, "");
-      productList.appendChild(card);
-    });
-
+    renderProducts(products);
     status.classList.add("is-hidden");
     setupSlider(productList);
+    setupFilter(products);
+    setupAddToCart(products);
   } catch (error) {
     status.textContent = "Sorry, we couldn't load the jackets. Please try again later.";
   }

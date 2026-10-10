@@ -13,3 +13,13 @@ export async function getProducts() {
   return products;
 }
 
+export async function getProduct(id) {
+  const response = await fetch(`${API_URL}/${id}`);
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch product. Status: ${response.status}`);
+  }
+
+  const result = await response.json();
+  return result.data;
+}

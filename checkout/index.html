@@ -88,8 +88,6 @@
       </nav>
 
       <div class="checkout">
-        <!-- Without JS the form simply opens the confirmation page.
-             In the JS stage: validation, clearing the cart, then redirect. -->
         <form class="checkout__form" id="checkout-form" action="confirmation/index.html">
           <h1 class="checkout__title">Checkout</h1>
 
@@ -97,7 +95,7 @@
             <legend class="checkout-step__legend">
               <span class="checkout-step__heading">
                 <span class="step-number" aria-hidden="true">1</span>
-                Contact &amp; address
+                Contact  address
               </span>
             </legend>
             <div class="checkout-step__fields">
@@ -371,115 +369,27 @@
               <span class="icon icon--arrow-left" aria-hidden="true"></span>
               Continue shopping
             </a>
-            <button type="submit" class="btn btn--accent btn--lg">
-              <span class="icon icon--arrow-up-right" aria-hidden="true"></span>
-              Place order
-            </button>
+            <button type="submit" form="checkout-form" class="btn btn--accent btn--lg">
+  <span class="icon icon--arrow-up-right" aria-hidden="true"></span>
+  Place order
+</button>
           </div>
         </form>
 
-        <!-- Example cart – in the JS stage the items come from the cart in localStorage,
-             with an empty-cart message when there is nothing in it -->
         <aside class="summary" aria-labelledby="summary-title">
           <h2 class="summary__title" id="summary-title">Your cart</h2>
-          <ul class="summary__items">
-            <li class="cart-item">
-              <img
-                src="../assets/images/placeholder-jacket-detail-2.webp"
-                alt="Grey hooded parka seen from the front."
-                class="cart-item__image"
-                width="992"
-                height="1056"
->
-              <div class="cart-item__body">
-                <div class="cart-item__header">
-                  <h3 class="cart-item__title">City Down Hooded Parka</h3>
-                  <p class="cart-item__price">$129.99</p>
-                </div>
-                <p class="cart-item__meta">Colour: Gray · Size: M</p>
-                <div class="cart-item__footer">
-                  <div
-                    class="quantity"
-                    role="group"
-                    aria-label="Quantity of City Down Hooded Parka"
-                  >
-                    <button type="button" class="quantity__btn" aria-label="Decrease quantity">
-                      <span class="icon icon--minus icon--sm" aria-hidden="true"></span>
-                    </button>
-                    <output class="quantity__value">1</output>
-                    <button type="button" class="quantity__btn" aria-label="Increase quantity">
-                      <span class="icon icon--plus icon--sm" aria-hidden="true"></span>
-                    </button>
-                  </div>
-                  <button
-                    type="button"
-                    class="cart-item__remove"
-                    aria-label="Remove City Down Hooded Parka from cart"
-                  >
-                    <span class="icon icon--trash icon--sm" aria-hidden="true"></span>
-                  </button>
-                </div>
-              </div>
-            </li>
-            <li class="cart-item">
-              <img
-                src="../assets/images/placeholder-jacket-detail-4.webp"
-                alt="Grey hooded parka worn open over a dark sweater."
-                class="cart-item__image"
-                width="992"
-                height="1056"
->
-              <div class="cart-item__body">
-                <div class="cart-item__header">
-                  <h3 class="cart-item__title">City Down Hooded Parka</h3>
-                  <p class="cart-item__price">$129.99</p>
-                </div>
-                <p class="cart-item__meta">Colour: Gray · Size: L</p>
-                <div class="cart-item__footer">
-                  <div
-                    class="quantity"
-                    role="group"
-                    aria-label="Quantity of City Down Hooded Parka"
-                  >
-                    <button type="button" class="quantity__btn" aria-label="Decrease quantity">
-                      <span class="icon icon--minus icon--sm" aria-hidden="true"></span>
-                    </button>
-                    <output class="quantity__value">1</output>
-                    <button type="button" class="quantity__btn" aria-label="Increase quantity">
-                      <span class="icon icon--plus icon--sm" aria-hidden="true"></span>
-                    </button>
-                  </div>
-                  <button
-                    type="button"
-                    class="cart-item__remove"
-                    aria-label="Remove City Down Hooded Parka from cart"
-                  >
-                    <span class="icon icon--trash icon--sm" aria-hidden="true"></span>
-                  </button>
-                </div>
-              </div>
-            </li>
+          <div id="cart-status" class="is-hidden" role="status" aria-live="polite"></div>
+          
+          <ul class="summary__items" id="cart-list">
+            <!-- Dynamic cart items rendered via JS -->
           </ul>
 
-          <div class="field">
-            <label for="discount-code" class="field__label">Discount code</label>
-            <div class="input-group">
-              <input
-                type="text"
-                id="discount-code"
-                name="discount"
-                class="field__input"
-                form="checkout-form"
-                placeholder="Enter code"
->
-              <button type="button" class="btn btn--accent btn--sm">Apply</button>
-            </div>
-          </div>
+         
 
           <dl class="summary__rows">
             <div class="summary__row">
               <dt>Subtotal</dt>
-              <dd>$259.98</dd>
+              <dd id="cart-subtotal">$0.00</dd>
             </div>
             <div class="summary__row">
               <dt>Shipping</dt>
@@ -487,13 +397,13 @@
             </div>
             <div class="summary__row">
               <dt>Incl. VAT (25%)</dt>
-              <dd>$52.00</dd>
+              <dd id="cart-vat">$0.00</dd>
             </div>
           </dl>
 
           <dl class="summary__total">
             <dt>Total</dt>
-            <dd>$259.98</dd>
+            <dd id="cart-total">$0.00</dd>
           </dl>
 
           <button type="submit" form="checkout-form" class="btn btn--accent btn--lg btn--full">
@@ -626,5 +536,6 @@
         </div>
       </div>
     </footer>
+    <script type="module" src="../js/pages/checkout.js"></script>
   </body>
 </html>

@@ -181,16 +181,16 @@
               from the elements without compromising on style.
             </p>
           </div>
-          <!-- Filter by gender – made interactive in the JS stage -->
+          <!-- Filter by gender (js/pages/home.js) -->
           <div class="chip-list" role="group" aria-label="Filter products">
             <button type="button" class="chip" aria-pressed="true">All</button>
-            <button type="button" class="chip" aria-pressed="false">Women</button>
-            <button type="button" class="chip" aria-pressed="false">Men</button>
+            <button type="button" class="chip" aria-pressed="false" data-gender="Female">Women</button>
+            <button type="button" class="chip" aria-pressed="false" data-gender="Male">Men</button>
           </div>
         </div>
 
         <div class="container">
-          <div id="products-status">Loading jackets...</div>
+          <div id="products-status" role="status" aria-live="polite">Loading jackets...</div>
 
           <div id="product-list" class="bestsellers__track"></div>
         </div>

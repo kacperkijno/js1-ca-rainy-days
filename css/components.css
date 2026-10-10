@@ -428,6 +428,7 @@
 .product-card__body {
   display: flex;
   flex-direction: column;
+  flex-grow: 1; /* every card in a row is equally tall */
   gap: var(--space-4);
   padding: var(--space-20) var(--space-16) 0;
 }
@@ -475,11 +476,14 @@
   color: var(--color-grey-600);
 }
 
+/* margin-top: auto pushes the button to the bottom of the card,
+   so buttons line up even when a title or price takes two lines */
 .product-card__actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: var(--space-12);
+  margin-top: auto;
+  padding-top: var(--space-12);
 }
 
 /* ----- Wishlist button (heart) ----- */

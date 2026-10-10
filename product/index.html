@@ -15,7 +15,7 @@
     <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Rainy Days">
-    <meta property="og:title" content="City Down Hooded Parka | Rainy Days">
+    <meta property="og:title" content="Jacket | Rainy Days">
     <meta
       property="og:description"
       content="See details, sizes and prices for Rainy Days jackets. Waterproof, warm and made for Nordic weather."
@@ -28,7 +28,7 @@
       property="og:image"
       content="https://kacperkijno.github.io/js1-ca-rainy-days/assets/images/hero-mountain.webp"
 >
-    <title>City Down Hooded Parka | Rainy Days</title>
+    <title>Jacket | Rainy Days</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -86,99 +86,45 @@
           <li class="breadcrumbs__item">
             <a href="../category/mens.html" class="breadcrumbs__link">Men's jackets</a>
           </li>
-          <li class="breadcrumbs__item" aria-current="page">City Down Hooded Parka</li>
+          <li class="breadcrumbs__item" aria-current="page">Jacket</li>
         </ol>
       </nav>
 
-      <!-- Example product – in the JS stage everything in this <article> comes from
-           the Rainy Days API (product id read from ?id= in the URL) -->
+      <div id="product-status" role="status" aria-live="polite">Loading jacket...</div>
+
+      <!-- Filled by js/pages/product.js with data from the Rainy Days API (?id= in the URL) -->
       <article class="product">
         <div class="product__gallery" role="region" aria-label="Product images" tabindex="0">
           <img
             src="../assets/images/placeholder-jacket-detail-2.webp"
-            alt="Grey hooded parka seen from the front, worn zipped up."
+            alt=""
             class="product__image"
             width="992"
             height="1056"
->
-          <img
-            src="../assets/images/placeholder-jacket-detail-1.webp"
-            alt="Grey hooded parka seen from the back."
-            class="product__image"
-            width="992"
-            height="1056"
->
-          <img
-            src="../assets/images/placeholder-jacket-detail-3.webp"
-            alt="Grey hooded parka from the side, the model holding the zip."
-            class="product__image"
-            width="992"
-            height="1056"
-            loading="lazy"
->
-          <img
-            src="../assets/images/placeholder-jacket-detail-4.webp"
-            alt="Grey hooded parka worn open over a dark sweater."
-            class="product__image"
-            width="992"
-            height="1056"
-            loading="lazy"
 >
         </div>
 
         <div class="product__details">
           <header class="product__header">
-            <p class="eyebrow">Men's jacket</p>
-            <h1 class="product__title">City Down Hooded Parka</h1>
-            <p class="price price--sale product__price">
+            <p class="eyebrow">Jacket</p>
+            <h1 class="product__title">Rainy Days jacket</h1>
+            <p class="price product__price">
               <span class="visually-hidden">Sale price</span>
-              <span class="price__current">$129.99</span>
+              <span class="price__current"></span>
               <span class="visually-hidden">Original price</span>
-              <s class="price__old">$149.99</s>
+              <s class="price__old"></s>
             </p>
           </header>
 
           <form class="product__form" aria-label="Choose colour, size and quantity">
             <fieldset class="product__option">
-              <legend class="product__option-label">Colour: Gray</legend>
-              <div class="swatch-picker">
-                <label class="swatch swatch--gray" title="Gray">
-                  <input type="radio" name="color" value="Gray" class="swatch__input" checked>
-                  <span class="swatch__color"></span>
-                  <span class="visually-hidden">Gray</span>
-                </label>
-              </div>
+              <legend class="product__option-label">Colour</legend>
+              <p class="product__color"></p>
             </fieldset>
 
             <fieldset class="product__option">
               <legend class="product__option-label">Size</legend>
-              <div class="size-picker">
-                <label class="size-picker__option">
-                  <input type="radio" name="size" value="XS" class="size-picker__input">
-                  <span class="size-picker__label">XS</span>
-                </label>
-                <label class="size-picker__option">
-                  <input type="radio" name="size" value="S" class="size-picker__input">
-                  <span class="size-picker__label">S</span>
-                </label>
-                <label class="size-picker__option">
-                  <input type="radio" name="size" value="M" class="size-picker__input" checked>
-                  <span class="size-picker__label">M</span>
-                </label>
-                <label class="size-picker__option">
-                  <input type="radio" name="size" value="L" class="size-picker__input">
-                  <span class="size-picker__label">L</span>
-                </label>
-                <label class="size-picker__option">
-                  <input type="radio" name="size" value="XL" class="size-picker__input">
-                  <span class="size-picker__label">XL</span>
-                </label>
-                <label class="size-picker__option">
-                  <input type="radio" name="size" value="XXL" class="size-picker__input">
-                  <span class="size-picker__label">XXL</span>
-                </label>
-              </div>
-              <a href="#product-details" class="text-link product__size-guide">Size guide</a>
+              <div class="size-picker"></div>
             </fieldset>
 
             <div class="product__option">
@@ -195,7 +141,7 @@
             </div>
 
             <p class="product__klarna">
-              Pay in 4 interest-free instalments of $32.50 with
+              Pay in 4 interest-free instalments with
               <img src="../assets/images/payment-klarna.png" alt="Klarna" width="62" height="14">
             </p>
 
@@ -241,124 +187,16 @@
           class="product-tabs__input product-tabs__input--description visually-hidden"
           checked
 >
-        <input
-          type="radio"
-          name="product-tab"
-          id="tab-features"
-          class="product-tabs__input product-tabs__input--features visually-hidden"
->
-        <input
-          type="radio"
-          name="product-tab"
-          id="tab-details"
-          class="product-tabs__input product-tabs__input--details visually-hidden"
->
-        <input
-          type="radio"
-          name="product-tab"
-          id="tab-reviews"
-          class="product-tabs__input product-tabs__input--reviews visually-hidden"
->
 
         <div class="product-tabs__list">
           <label for="tab-description" class="product-tabs__label product-tabs__label--description"
             >Description</label
           >
-          <label for="tab-features" class="product-tabs__label product-tabs__label--features"
-            >Features</label
-          >
-          <label for="tab-details" class="product-tabs__label product-tabs__label--details"
-            >Details</label
-          >
-          <label for="tab-reviews" class="product-tabs__label product-tabs__label--reviews"
-            >Reviews</label
-          >
         </div>
 
         <div class="product-tabs__panel product-tabs__panel--description">
           <h2 class="visually-hidden">Description</h2>
-          <p>
-            Cold weather doesn't mean less time outside. The City Down Hooded Parka combines a
-            modern look with 600-fill recycled down insulation and a water-repellent finish, so you
-            can switch easily between everyday use and days off the grid. Light. Packable.
-            Protective. This jacket is made to get you out the door.
-          </p>
-        </div>
-
-        <div class="product-tabs__panel product-tabs__panel--features">
-          <h2 class="visually-hidden">Features</h2>
-          <ul class="product-tabs__features">
-            <li>Regular fit</li>
-            <li>PFC-free DWR finish for extra water repellency</li>
-            <li>Shell and lining made from recycled nylon</li>
-            <li>600-fill recycled down</li>
-            <li>Adjustable hood with hidden snaps</li>
-            <li>Two-way front zip with a storm flap</li>
-            <li>Zipped hand pockets and an inner chest pocket</li>
-            <li>Knitted cuffs with inner elastic</li>
-          </ul>
-        </div>
-
-        <div class="product-tabs__panel product-tabs__panel--details">
-          <h2 class="visually-hidden">Details</h2>
-          <dl class="spec-list">
-            <dt>Sizes</dt>
-            <dd>XS, S, M, L, XL, XXL</dd>
-            <dt>Back length</dt>
-            <dd>81 cm (size M)</dd>
-            <dt>Shell</dt>
-            <dd>100% recycled nylon taffeta with PFC-free DWR finish</dd>
-            <dt>Lining</dt>
-            <dd>100% recycled nylon</dd>
-            <dt>Insulation</dt>
-            <dd>600-fill recycled down</dd>
-          </dl>
-        </div>
-
-        <div class="product-tabs__panel product-tabs__panel--reviews">
-          <h2 class="visually-hidden">Reviews</h2>
-          <div class="reviews">
-            <article class="review-card">
-              <p class="review-card__stars">
-                <span class="icon icon--star icon--sm" aria-hidden="true"></span
-                ><span class="icon icon--star icon--sm" aria-hidden="true"></span
-                ><span class="icon icon--star icon--sm" aria-hidden="true"></span
-                ><span class="icon icon--star icon--sm" aria-hidden="true"></span
-                ><span class="icon icon--star icon--sm" aria-hidden="true"></span>
-                <span class="visually-hidden">Rated 5 out of 5</span>
-              </p>
-              <h3 class="review-card__author">
-                Samantha D.
-                <span class="icon icon--check-circle icon--sm" aria-hidden="true"></span>
-                <span class="visually-hidden">(verified buyer)</span>
-              </h3>
-              <p>
-                Warm, light and it really keeps the rain out. I wore it on a week-long trip in
-                Lofoten and stayed dry the whole time.
-              </p>
-              <p class="review-card__date">Posted 14 August 2026</p>
-            </article>
-            <article class="review-card">
-              <p class="review-card__stars">
-                <span class="icon icon--star icon--sm" aria-hidden="true"></span
-                ><span class="icon icon--star icon--sm" aria-hidden="true"></span
-                ><span class="icon icon--star icon--sm" aria-hidden="true"></span
-                ><span class="icon icon--star icon--sm" aria-hidden="true"></span
-                ><span class="icon icon--star icon--sm" aria-hidden="true"></span>
-                <span class="visually-hidden">Rated 5 out of 5</span>
-              </p>
-              <h3 class="review-card__author">
-                Erik L.
-                <span class="icon icon--check-circle icon--sm" aria-hidden="true"></span>
-                <span class="visually-hidden">(verified buyer)</span>
-              </h3>
-              <p>
-                Great fit and the hood stays put in strong wind. The pockets are deep enough for
-                gloves and a phone.
-              </p>
-              <p class="review-card__date">Posted 2 September 2026</p>
-            </article>
-          </div>
+          <p></p>
         </div>
       </section>
     </main>
@@ -485,5 +323,6 @@
         </div>
       </div>
     </footer>
+    <script type="module" src="../js/pages/product.js"></script>
   </body>
 </html>

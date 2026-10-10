@@ -77,13 +77,17 @@ export function createProductCard(product, basePath) {
 
   body.appendChild(category);
 
+  const actions = document.createElement("div");
+  actions.classList.add("product-card__actions");
+
   const addButton = document.createElement("button");
   addButton.type = "button";
-  addButton.classList.add("btn", "btn--sm", "add-to-cart");
+  addButton.classList.add("btn", "btn--sm", "btn--accent", "add-to-cart");
   addButton.textContent = "Add to cart";
   addButton.dataset.id = product.id;
 
-  body.appendChild(addButton);
+  actions.appendChild(addButton);
+  body.appendChild(actions);
   card.appendChild(body);
 
   return card;
