@@ -3,7 +3,8 @@ import {
   removeFromCart,
   changeQuantity,
   getCartTotal,
-  updateCartBadge
+  updateCartBadge,
+  clearCart
 } from "../cart.js";
 
 const cartList = document.querySelector("#cart-list");
@@ -167,3 +168,15 @@ cartList.addEventListener("click", (event) => {
 });
 
 renderCart();
+
+const checkoutForm = document.querySelector("#checkout-form");
+
+if (checkoutForm) {
+  checkoutForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    
+    clearCart();
+    
+    window.location.href = "confirmation/index.html";
+  });
+}

@@ -83,3 +83,8 @@ export function updateCartBadge() {
   }
   badgeElement.textContent = getCartCount();
 }
+
+export function clearCart() {
+  localStorage.removeItem(CART_KEY);
+  updateCartBadge();
+}
