@@ -1,3 +1,5 @@
+import { addToCart } from "./cart.js";
+
 export function createProductCard(product, basePath) {
   const productUrl = `${basePath}product/index.html?id=${product.id}`;
 
@@ -91,4 +93,73 @@ export function createProductCard(product, basePath) {
   card.appendChild(body);
 
   return card;
+}
+
+export function setupAddToCart(products, statusElement = null) {
+  const popover = document.querySelector("#size-popover");
+  const popoverList = document.querySelector("#size-popover-list");
+  const productList = document.querySelector("#product-list");
+
+  if (!popover || !popoverList || !productList) {
+    return;
+  }
+
+  productList.addEventListener("click", (event) => {
+    const button = event.target.closest(".add-to-cart");
+    if (!button) {
+      return;
+    }
+
+    const productId = button.dataset.id;
+    const product = products.find((p) => p.id === productId);
+
+    if (!product) {
+      return;
+    }
+
+    popoverList.innerHTML = "";
+
+    if (product.sizes && product.sizes.length > 0) {
+      product.sizes.forEach((size) => {
+        const sizeBtn = document.createElement("button");
+        sizeBtn.type = "button";
+        sizeBtn.classList.add("size-popover__btn");
+        sizeBtn.textContent = size;
+        sizeBtn.dataset.id = product.id;
+        sizeBtn.dataset.size = size;
+        popoverList.appendChild(sizeBtn);
+      });
+    }
+
+    if (typeof popover.showPopover === "function") {
+      popover.showPopover();
+    }
+  });
+
+  popoverList.addEventListener("click", (event) => {
+    const sizeBtn = event.target.closest(".size-popover__btn");
+    if (!sizeBtn) {
+      return;
+    }
+
+    const productId = sizeBtn.dataset.id;
+    const size = sizeBtn.dataset.size;
+    const product = products.find((p) => p.id === productId);
+
+    if (product) {
+      addToCart(product, size);
+
+      if (typeof popover.hidePopover === "function") {
+        popover.hidePopover();
+      }
+
+      if (statusElement) {
+        statusElement.textContent = `Added ${product.title} (Size: ${size}) to your cart!`;
+        statusElement.classList.remove("is-hidden");
+        setTimeout(() => {
+          statusElement.classList.add("is-hidden");
+        }, 3000);
+      }
+    }
+  });
 }

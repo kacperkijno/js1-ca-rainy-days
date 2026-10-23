@@ -63,17 +63,22 @@ function renderCart() {
     const headerDiv = document.createElement("div");
     headerDiv.classList.add("cart-item__header");
 
-    const h3 = document.createElement("h3");
-    h3.classList.add("cart-item__title");
-    h3.textContent = item.title;
+const h3 = document.createElement("h3");
+  h3.classList.add("cart-item__title");
+  h3.textContent = item.title;
 
-    const priceP = document.createElement("p");
-    priceP.classList.add("cart-item__price");
-    const itemTotal = item.price * item.quantity;
-    priceP.textContent = `$${itemTotal.toFixed(2)}`;
+  const sizeP = document.createElement("p");
+  sizeP.classList.add("cart-item__size");
+  sizeP.textContent = `Size: ${item.size}`;
 
-    headerDiv.appendChild(h3);
-    headerDiv.appendChild(priceP);
+  const priceP = document.createElement("p");
+  priceP.classList.add("cart-item__price");
+  const itemTotal = item.price * item.quantity;
+  priceP.textContent = `$${itemTotal.toFixed(2)}`;
+
+  headerDiv.appendChild(h3);
+  headerDiv.appendChild(sizeP);
+  headerDiv.appendChild(priceP);
 
     const footerDiv = document.createElement("div");
     footerDiv.classList.add("cart-item__footer");
@@ -87,7 +92,7 @@ function renderCart() {
     minusBtn.type = "button";
     minusBtn.classList.add("quantity__btn");
     minusBtn.setAttribute("aria-label", "Decrease quantity");
-    minusBtn.dataset.id = item.id;
+    minusBtn.dataset.id = item.cartItemId;
     minusBtn.dataset.change = "-1";
 
     const minusSpan = document.createElement("span");
@@ -103,7 +108,7 @@ function renderCart() {
     plusBtn.type = "button";
     plusBtn.classList.add("quantity__btn");
     plusBtn.setAttribute("aria-label", "Increase quantity");
-    plusBtn.dataset.id = item.id;
+    plusBtn.dataset.id = item.cartItemId;
     plusBtn.dataset.change = "1";
 
     const plusSpan = document.createElement("span");
@@ -119,7 +124,7 @@ function renderCart() {
     removeBtn.type = "button";
     removeBtn.classList.add("cart-item__remove");
     removeBtn.setAttribute("aria-label", `Remove ${item.title} from cart`);
-    removeBtn.dataset.id = item.id;
+    removeBtn.dataset.id = item.cartItemId;
 
     const removeSpan = document.createElement("span");
     removeSpan.classList.add("icon", "icon--trash", "icon--sm");

@@ -5,27 +5,40 @@ export function getCart() {
   if (!cartData) {
     return [];
   }
-  return JSON.parse(cartData);
+  try {
+    const cart = JSON.parse(cartData);
+    return cart.map((item) => ({
+      ...item,
+      cartItemId: item.cartItemId || `${item.id}-${item.size || "M"}`,
+      size: item.size || "M"
+    }));
+  } catch (error) {
+    return [];
+  }
 }
 
 export function saveCart(cart) {
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
 
-export function addToCart(product) {
+export function addToCart(product, size = "M") {
   const cart = getCart();
-  const existingProduct = cart.find((item) => item.id === product.id);
-
+  
+  const cartItemId = `${product.id}-${size}`;
   const finalPrice = product.onSale ? product.discountedPrice : product.price;
+
+  const existingProduct = cart.find((item) => item.cartItemId === cartItemId);
 
   if (existingProduct) {
     existingProduct.quantity += 1;
   } else {
     cart.push({
+      cartItemId: cartItemId,
       id: product.id,
       title: product.title,
       price: finalPrice,
       image: product.image,
+      size: size,
       quantity: 1
     });
   }
@@ -34,16 +47,16 @@ export function addToCart(product) {
   updateCartBadge();
 }
 
-export function removeFromCart(id) {
+export function removeFromCart(cartItemId) {
   const cart = getCart();
-  const updatedCart = cart.filter((item) => item.id !== id);
+  const updatedCart = cart.filter((item) => item.cartItemId !== cartItemId);
   saveCart(updatedCart);
   updateCartBadge();
 }
 
-export function changeQuantity(id, change) {
+export function changeQuantity(cartItemId, change) {
   const cart = getCart();
-  const item = cart.find((product) => product.id === id);
+  const item = cart.find((product) => product.cartItemId === cartItemId);
 
   if (!item) {
     return;
@@ -52,7 +65,7 @@ export function changeQuantity(id, change) {
   item.quantity += change;
 
   if (item.quantity <= 0) {
-    removeFromCart(id);
+    removeFromCart(cartItemId);
     return;
   }
 
@@ -60,31 +73,39 @@ export function changeQuantity(id, change) {
   updateCartBadge();
 }
 
+export function clearCart() {
+  localStorage.removeItem(CART_KEY);
+  updateCartBadge();
+}
+
 export function getCartCount() {
-  let count = 0;
-  getCart().forEach((item) => {
-    count += item.quantity;
+  const cart = getCart();
+  let totalCount = 0;
+  cart.forEach((item) => {
+    totalCount += item.quantity;
   });
-  return count;
+  return totalCount;
 }
 
 export function getCartTotal() {
-  let total = 0;
-  getCart().forEach((item) => {
-    total += item.price * item.quantity;
+  const cart = getCart();
+  let totalPrice = 0;
+  cart.forEach((item) => {
+    totalPrice += item.price * item.quantity;
   });
-  return total;
+  return totalPrice;
 }
 
 export function updateCartBadge() {
   const badgeElement = document.querySelector(".cart-badge");
-  if (!badgeElement) {
-    return;
-  }
-  badgeElement.textContent = getCartCount();
-}
+  const screenReaderText = document.querySelector(".cart-link .visually-hidden");
+  
+  const count = getCartCount();
 
-export function clearCart() {
-  localStorage.removeItem(CART_KEY);
-  updateCartBadge();
+  if (badgeElement) {
+    badgeElement.textContent = count;
+  }
+  if (screenReaderText) {
+    screenReaderText.textContent = `(${count} items)`;
+  }
 }

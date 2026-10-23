@@ -86,11 +86,29 @@ async function initProductPage() {
       sizePickerContainer.appendChild(label);
     });
 
-    const productForm = document.querySelector(".product__form");
+const productForm = document.querySelector(".product__form");
     if (productForm) {
       productForm.addEventListener("submit", (event) => {
         event.preventDefault();
-        addToCart(product);
+
+        const selectedSizeInput = document.querySelector('input[name="size"]:checked');
+
+        if (!selectedSizeInput) {
+          statusElement.textContent = "Please select a size before adding to cart.";
+          statusElement.classList.remove("is-hidden");
+          return;
+        }
+
+        const selectedSize = selectedSizeInput.value;
+
+        addToCart(product, selectedSize);
+
+        statusElement.textContent = `Added ${product.title} (Size: ${selectedSize}) to your cart!`;
+        statusElement.classList.remove("is-hidden");
+
+        setTimeout(() => {
+          statusElement.classList.add("is-hidden");
+        }, 3000);
       });
     }
 

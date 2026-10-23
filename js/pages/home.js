@@ -1,6 +1,6 @@
 import { getProducts } from "../api.js";
-import { createProductCard } from "../render.js";
-import { addToCart, updateCartBadge } from "../cart.js";
+import { createProductCard, setupAddToCart } from "../render.js";
+import { updateCartBadge } from "../cart.js";
 
 const productList = document.querySelector("#product-list");
 const status = document.querySelector("#products-status");
@@ -9,6 +9,7 @@ updateCartBadge();
 
 function setupSlider(track) {
   const arrows = document.querySelectorAll(".bestsellers__arrows .arrow-btn");
+  if (!arrows.length) return;
   const prevButton = arrows[0];
   const nextButton = arrows[1];
 
@@ -23,25 +24,21 @@ function setupSlider(track) {
   nextButton.addEventListener("click", () => {
     const card = track.firstElementChild;
     if (!card) return;
-
     track.scrollBy({ left: card.offsetWidth, behavior: "smooth" });
   });
 
   prevButton.addEventListener("click", () => {
     const card = track.firstElementChild;
     if (!card) return;
-
     track.scrollBy({ left: -card.offsetWidth, behavior: "smooth" });
   });
 
   track.addEventListener("scroll", updateButtons);
-
   updateButtons();
 }
 
 function renderProducts(products) {
   productList.innerHTML = "";
-
   products.forEach((product) => {
     const card = createProductCard(product, "");
     productList.appendChild(card);
@@ -50,6 +47,7 @@ function renderProducts(products) {
 
 function setupFilter(products) {
   const chipList = document.querySelector(".chip-list");
+  if (!chipList) return;
   const chips = document.querySelectorAll(".chip");
 
   chipList.addEventListener("click", (event) => {
@@ -73,22 +71,6 @@ function setupFilter(products) {
   });
 }
 
-function setupAddToCart(products) {
-  productList.addEventListener("click", (event) => {
-    const button = event.target.closest(".add-to-cart");
-    if (!button) {
-      return;
-    }
-
-    const productId = button.dataset.id;
-    const product = products.find((p) => p.id === productId);
-
-    if (product) {
-      addToCart(product);
-    }
-  });
-}
-
 async function initHomePage() {
   try {
     const products = await getProducts();
@@ -102,7 +84,8 @@ async function initHomePage() {
     status.classList.add("is-hidden");
     setupSlider(productList);
     setupFilter(products);
-    setupAddToCart(products);
+    
+    setupAddToCart(products, status);
   } catch (error) {
     status.textContent = "Sorry, we couldn't load the jackets. Please try again later.";
   }

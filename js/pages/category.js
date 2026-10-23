@@ -1,27 +1,11 @@
 import { getProducts } from "../api.js";
-import { createProductCard } from "../render.js";
-import { addToCart, updateCartBadge } from "../cart.js";
+import { createProductCard, setupAddToCart } from "../render.js";
+import { updateCartBadge } from "../cart.js";
 
 const productList = document.querySelector("#product-list");
 const status = document.querySelector("#products-status");
 
 updateCartBadge();
-
-function setupAddToCart(products) {
-  productList.addEventListener("click", (event) => {
-    const button = event.target.closest(".add-to-cart");
-    if (!button) {
-      return;
-    }
-
-    const productId = button.dataset.id;
-    const product = products.find((p) => p.id === productId);
-
-    if (product) {
-      addToCart(product);
-    }
-  });
-}
 
 async function initCategoryPage() {
   const gender = productList.dataset.gender;
@@ -40,8 +24,9 @@ async function initCategoryPage() {
       productList.appendChild(card);
     });
 
-    setupAddToCart(filteredProducts);
     status.classList.add("is-hidden");
+    
+    setupAddToCart(filteredProducts, status);
   } catch (error) {
     status.textContent = "Sorry, we couldn't load the jackets. Please try again later.";
   }

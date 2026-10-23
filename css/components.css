@@ -882,3 +882,53 @@ select.field__input {
 .is-hidden {
   display: none;
 }
+
+.size-popover {
+  display: none;
+  padding: var(--space-16);
+  border: var(--stroke-1) solid var(--color-grey-300);
+  border-radius: var(--radius-4);
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-1);
+  min-width: 160px;
+}
+
+.size-popover:popover-open {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.size-popover__title {
+  font-family: var(--font-family-body);
+  font-size: var(--fs-14);
+  font-weight: var(--fw-600);
+  color: var(--color-black);
+  margin: 0;
+}
+
+.size-popover__list {
+  display: flex;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.size-popover__btn {
+  padding: var(--space-4) var(--space-12);
+  font-family: var(--font-family-body);
+  font-size: var(--fs-14);
+  font-weight: var(--fw-500);
+  border: var(--stroke-1) solid var(--color-grey-400);
+  background: transparent;
+  color: var(--color-black);
+  border-radius: var(--radius-4);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.size-popover__btn:hover,
+.size-popover__btn:focus-visible {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  border-color: var(--color-navy);
+}
