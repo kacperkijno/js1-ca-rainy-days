@@ -884,7 +884,6 @@ select.field__input {
 }
 
 .size-popover {
-  display: none;
   padding: var(--space-16);
   border: var(--stroke-1) solid var(--color-grey-300);
   border-radius: var(--radius-4);
@@ -914,16 +913,21 @@ select.field__input {
 }
 
 .size-popover__btn {
-  padding: var(--space-4) var(--space-12);
+  height: 40px;
+  padding: 0 var(--space-12);
   font-family: var(--font-family-body);
   font-size: var(--fs-14);
   font-weight: var(--fw-500);
-  border: var(--stroke-1) solid var(--color-grey-400);
+  text-transform: uppercase;
+  border: var(--stroke-1) solid var(--color-grey-600);
   background: transparent;
   color: var(--color-black);
   border-radius: var(--radius-4);
   cursor: pointer;
-  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+  transition: 
+    background-color var(--transition-fast), 
+    color var(--transition-fast), 
+    border-color var(--transition-fast);
 }
 
 .size-popover__btn:hover,

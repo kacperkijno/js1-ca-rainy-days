@@ -21,7 +21,7 @@ export function saveCart(cart) {
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
 
-export function addToCart(product, size = "M") {
+export function addToCart(product, size = "M", quantity = 1) {
   const cart = getCart();
   
   const cartItemId = `${product.id}-${size}`;
@@ -30,7 +30,7 @@ export function addToCart(product, size = "M") {
   const existingProduct = cart.find((item) => item.cartItemId === cartItemId);
 
   if (existingProduct) {
-    existingProduct.quantity += 1;
+    existingProduct.quantity += quantity;
   } else {
     cart.push({
       cartItemId: cartItemId,
@@ -39,7 +39,7 @@ export function addToCart(product, size = "M") {
       price: finalPrice,
       image: product.image,
       size: size,
-      quantity: 1
+      quantity: quantity
     });
   }
 

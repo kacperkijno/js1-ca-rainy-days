@@ -13,6 +13,25 @@ const sizePickerContainer = document.querySelector(".size-picker");
 const breadcrumbCurrent = document.querySelector('.breadcrumbs__item[aria-current="page"]');
 const breadcrumbParent = document.querySelector('.breadcrumbs__item:not([aria-current="page"]) a');
 const statusElement = document.querySelector("#product-status");
+const decreaseBtn = document.querySelector('.quantity__btn[aria-label="Decrease quantity"]');
+const increaseBtn = document.querySelector('.quantity__btn[aria-label="Increase quantity"]');
+const quantityOutput = document.querySelector(".quantity__value");
+
+let quantity = 1;
+
+if (decreaseBtn && increaseBtn && quantityOutput) {
+  decreaseBtn.addEventListener("click", () => {
+    if (quantity > 1) {
+      quantity--;
+      quantityOutput.textContent = quantity;
+    }
+  });
+
+  increaseBtn.addEventListener("click", () => {
+    quantity++;
+    quantityOutput.textContent = quantity;
+  });
+}
 
 const id = new URLSearchParams(location.search).get("id");
 
@@ -86,7 +105,7 @@ async function initProductPage() {
       sizePickerContainer.appendChild(label);
     });
 
-const productForm = document.querySelector(".product__form");
+    const productForm = document.querySelector(".product__form");
     if (productForm) {
       productForm.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -101,9 +120,9 @@ const productForm = document.querySelector(".product__form");
 
         const selectedSize = selectedSizeInput.value;
 
-        addToCart(product, selectedSize);
+        addToCart(product, selectedSize, quantity);
 
-        statusElement.textContent = `Added ${product.title} (Size: ${selectedSize}) to your cart!`;
+        statusElement.textContent = `Added ${quantity} x ${product.title} (Size: ${selectedSize}) to your cart!`;
         statusElement.classList.remove("is-hidden");
 
         setTimeout(() => {
