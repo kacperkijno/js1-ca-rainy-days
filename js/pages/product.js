@@ -13,9 +13,11 @@ const sizePickerContainer = document.querySelector(".size-picker");
 const breadcrumbCurrent = document.querySelector('.breadcrumbs__item[aria-current="page"]');
 const breadcrumbParent = document.querySelector('.breadcrumbs__item:not([aria-current="page"]) a');
 const statusElement = document.querySelector("#product-status");
+const productContainer = document.querySelector(".product");
 const decreaseBtn = document.querySelector('.quantity__btn[aria-label="Decrease quantity"]');
 const increaseBtn = document.querySelector('.quantity__btn[aria-label="Increase quantity"]');
 const quantityOutput = document.querySelector(".quantity__value");
+const productTabs = document.querySelector(".product-tabs");
 
 let quantity = 1;
 
@@ -38,24 +40,41 @@ const id = new URLSearchParams(location.search).get("id");
 updateCartBadge();
 
 async function initProductPage() {
-  if (!id) {
-    statusElement.textContent = "No product ID provided.";
+if (!id) {
+    statusElement.textContent = "No product ID provided. Please select a product from the store.";
     statusElement.classList.remove("is-hidden");
+    if (productContainer) {
+      productContainer.classList.add("is-hidden");
+    }
+    if (productTabs) {
+      productTabs.classList.add("is-hidden");
+    }
     return;
   }
 
   statusElement.textContent = "Loading product...";
   statusElement.classList.remove("is-hidden");
+  if (productContainer) {
+    productContainer.classList.remove("is-hidden");
+  }
+  if (productTabs) {
+    productTabs.classList.remove("is-hidden");
+  }
 
   try {
     const product = await getProduct(id);
+
+    if (!product) {
+      throw new Error("Product not found");
+    }
 
     titleElement.textContent = product.title;
     breadcrumbCurrent.textContent = product.title;
     document.title = `${product.title} | Rainy Days`;
 
-    imageElement.src = product.image.url;
-    imageElement.alt = product.image.alt;
+imageElement.src = product.image.url;
+imageElement.alt = product.image.alt;
+imageElement.classList.remove("is-hidden");
 
     descriptionElement.textContent = product.description;
     colorElement.textContent = product.baseColor;
@@ -133,9 +152,14 @@ async function initProductPage() {
 
     statusElement.classList.add("is-hidden");
   } catch (error) {
-    statusElement.textContent = "Sorry, we couldn’t load this jacket.";
+    statusElement.textContent = "Sorry, we couldn’t load this jacket. It may have been removed.";
     statusElement.classList.remove("is-hidden");
+    if (productContainer) {
+      productContainer.classList.add("is-hidden");
+    }
+    if (productTabs) {
+      productTabs.classList.add("is-hidden");
+    }
   }
-}
 
 initProductPage();

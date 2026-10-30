@@ -150,6 +150,10 @@
   margin-bottom: var(--space-24);
 }
 
+.product.is-hidden {
+  display: none;
+}
+
 .product-tabs__label {
   padding: var(--space-4) 0;
   border-bottom: 3px solid transparent;

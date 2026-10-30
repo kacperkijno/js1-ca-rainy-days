@@ -180,6 +180,9 @@ if (checkoutForm) {
   checkoutForm.addEventListener("submit", (event) => {
     event.preventDefault();
     
+    const randomOrderNumber = `RD-${Math.floor(100000 + Math.random() * 900000)}`;
+    localStorage.setItem("lastOrderNumber", randomOrderNumber);
+
     clearCart();
     
     window.location.href = "confirmation/index.html";
