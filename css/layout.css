@@ -345,3 +345,8 @@
     gap: var(--space-12);
   }
 }
+
+.newsletter-message {
+  margin-top: 10px;
+  font-weight: 500;
+}

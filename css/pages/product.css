@@ -104,9 +104,8 @@
 }
 
 .product__actions {
-  display: grid;
-  grid-template-columns: 62px 1fr;
-  gap: var(--space-8);
+  display: flex;
+  flex-direction: column;
 }
 
 .product__actions .btn {

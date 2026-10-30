@@ -1,5 +1,6 @@
 import { getProduct } from "../api.js";
 import { addToCart, updateCartBadge } from "../cart.js";
+import "../newsletter.js";
 
 const titleElement = document.querySelector(".product__title");
 const currentPriceElement = document.querySelector(".price__current");

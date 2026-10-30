@@ -6,6 +6,7 @@ import {
   updateCartBadge,
   clearCart
 } from "../cart.js";
+import "../newsletter.js";
 
 const cartList = document.querySelector("#cart-list");
 const subtotalElement = document.querySelector("#cart-subtotal");
@@ -196,7 +197,6 @@ shippingInputs.forEach((input) => {
 
 renderCart();
 
-// --- OBSŁUGA PŁATNOŚCI I UKRYWANIA PÓL KARTY ---
 const paymentInputs = document.querySelectorAll("input[name='payment']");
 const cardFieldsContainer = document.querySelector("#card-fields-container");
 const cardInputs = cardFieldsContainer ? cardFieldsContainer.querySelectorAll("input") : [];

@@ -1,6 +1,7 @@
 import { getProducts } from "../api.js";
 import { createProductCard, setupAddToCart } from "../render.js";
 import { updateCartBadge } from "../cart.js";
+import "../newsletter.js";
 
 const productList = document.querySelector("#product-list");
 const status = document.querySelector("#products-status");
