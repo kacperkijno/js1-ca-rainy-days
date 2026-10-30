@@ -23,7 +23,7 @@ async function initCategoryPage() {
 
   try {
     const products = await getProducts();
-    
+
     allProducts = products.filter((p) => p.gender === currentGender);
 
     statusElement.classList.add("is-hidden");
@@ -59,7 +59,6 @@ async function initCategoryPage() {
         applyFiltersAndSort();
       });
     }
-
   } catch (error) {
     statusElement.textContent = "Could not load jackets. Please try again later.";
     statusElement.classList.remove("is-hidden");
@@ -84,16 +83,15 @@ function renderProducts(products) {
 }
 
 function applyFiltersAndSort() {
-  const checkedColors = Array.from(
-    document.querySelectorAll('input[name="color"]:checked')
-  ).map((input) => input.value);
+  const checkedColors = Array.from(document.querySelectorAll('input[name="color"]:checked')).map(
+    (input) => input.value,
+  );
 
   const onSaleCheckbox = document.querySelector('input[name="onSale"]');
   const isOnSaleOnly = onSaleCheckbox ? onSaleCheckbox.checked : false;
 
   let filtered = allProducts.filter((product) => {
-    const matchesColor =
-      checkedColors.length === 0 || checkedColors.includes(product.baseColor);
+    const matchesColor = checkedColors.length === 0 || checkedColors.includes(product.baseColor);
     const matchesSale = !isOnSaleOnly || product.onSale === true;
 
     return matchesColor && matchesSale;

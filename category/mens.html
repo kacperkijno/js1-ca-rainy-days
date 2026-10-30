@@ -104,7 +104,7 @@
           aria-label="Show filters"
         />
 
-        <!-- Filters – they only work once JS is added (filtering the API data) -->
+        <!-- Filters and sorting (js/pages/category.js) -->
         <aside class="filters" aria-labelledby="filters-title">
           <form class="filters__form">
             <div class="filters__header">
@@ -147,7 +147,6 @@
                 </div>
               </fieldset>
             </details>
-
 
             <details class="filter-group">
               <summary class="filter-group__header">
@@ -327,9 +326,9 @@
       </div>
     </footer>
     <script type="module" src="../js/pages/category.js"></script>
-<div id="size-popover" class="size-popover" popover>
-  <p class="size-popover__title">Select size</p>
-  <div id="size-popover-list" class="size-popover__list"></div>
-</div>
+    <div id="size-popover" class="size-popover" popover>
+      <p class="size-popover__title">Select size</p>
+      <div id="size-popover-list" class="size-popover__list"></div>
+    </div>
   </body>
 </html>

@@ -4,7 +4,7 @@ import {
   changeQuantity,
   getCartTotal,
   updateCartBadge,
-  clearCart
+  clearCart,
 } from "../cart.js";
 import "../newsletter.js";
 
@@ -36,7 +36,7 @@ function renderCart() {
     if (shippingElement) shippingElement.textContent = "$0.00";
     vatElement.textContent = "$0.00";
     totalElement.textContent = "$0.00";
-    
+
     submitButtons.forEach((button) => {
       button.disabled = true;
     });
@@ -153,7 +153,7 @@ function renderCart() {
 
 function updateTotals() {
   const subtotal = getCartTotal();
-  
+
   const selectedShippingInput = document.querySelector("input[name='shipping']:checked");
   let shippingCost = 0;
   if (selectedShippingInput && selectedShippingInput.value === "express") {
@@ -203,21 +203,21 @@ const cardInputs = cardFieldsContainer ? cardFieldsContainer.querySelectorAll("i
 
 function handlePaymentChange() {
   const selectedPayment = document.querySelector("input[name='payment']:checked");
-  
+
   if (selectedPayment && selectedPayment.value === "card") {
     if (cardFieldsContainer) {
       cardFieldsContainer.classList.remove("is-hidden");
     }
-    cardInputs.forEach(input => {
+    cardInputs.forEach((input) => {
       input.setAttribute("required", "required");
     });
   } else {
     if (cardFieldsContainer) {
       cardFieldsContainer.classList.add("is-hidden");
     }
-    cardInputs.forEach(input => {
+    cardInputs.forEach((input) => {
       input.removeAttribute("required");
-      input.value = ""; 
+      input.value = "";
     });
   }
 }
@@ -235,7 +235,7 @@ if (checkoutForm) {
     event.preventDefault();
 
     const selectedPayment = document.querySelector("input[name='payment']:checked");
-    
+
     if (selectedPayment && selectedPayment.value === "card") {
       const expiryInput = document.querySelector("#card-expiry");
       if (expiryInput && expiryInput.value) {
@@ -249,12 +249,13 @@ if (checkoutForm) {
 
         if (year < currentYear || (year === currentYear && month < currentMonth)) {
           if (statusElement) {
-            statusElement.textContent = "The card expiry date is in the past. Please enter a valid expiry date.";
+            statusElement.textContent =
+              "The card expiry date is in the past. Please enter a valid expiry date.";
             statusElement.classList.remove("is-hidden");
             statusElement.scrollIntoView({ behavior: "smooth" });
           }
           expiryInput.focus();
-          return; 
+          return;
         }
       }
     }
@@ -263,7 +264,7 @@ if (checkoutForm) {
     localStorage.setItem("lastOrderNumber", randomOrderNumber);
 
     clearCart();
-    
+
     window.location.href = "confirmation/index.html";
   });
 }

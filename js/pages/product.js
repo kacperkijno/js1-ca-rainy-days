@@ -41,7 +41,7 @@ const id = new URLSearchParams(location.search).get("id");
 updateCartBadge();
 
 async function initProductPage() {
-if (!id) {
+  if (!id) {
     statusElement.textContent = "No product ID provided. Please select a product from the store.";
     statusElement.classList.remove("is-hidden");
     if (productContainer) {
@@ -73,9 +73,9 @@ if (!id) {
     breadcrumbCurrent.textContent = product.title;
     document.title = `${product.title} | Rainy Days`;
 
-imageElement.src = product.image.url;
-imageElement.alt = product.image.alt;
-imageElement.classList.remove("is-hidden");
+    imageElement.src = product.image.url;
+    imageElement.alt = product.image.alt;
+    imageElement.classList.remove("is-hidden");
 
     descriptionElement.textContent = product.description;
     colorElement.textContent = product.baseColor;

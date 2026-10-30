@@ -85,7 +85,7 @@ async function initHomePage() {
     status.classList.add("is-hidden");
     setupSlider(productList);
     setupFilter(products);
-    
+
     setupAddToCart(products, status);
   } catch (error) {
     status.textContent = "Sorry, we couldn't load the jackets. Please try again later.";

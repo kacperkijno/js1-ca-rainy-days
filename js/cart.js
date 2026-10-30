@@ -10,7 +10,7 @@ export function getCart() {
     return cart.map((item) => ({
       ...item,
       cartItemId: item.cartItemId || `${item.id}-${item.size || "M"}`,
-      size: item.size || "M"
+      size: item.size || "M",
     }));
   } catch (error) {
     return [];
@@ -23,7 +23,7 @@ export function saveCart(cart) {
 
 export function addToCart(product, size = "M", quantity = 1) {
   const cart = getCart();
-  
+
   const cartItemId = `${product.id}-${size}`;
   const finalPrice = product.onSale ? product.discountedPrice : product.price;
 
@@ -39,7 +39,7 @@ export function addToCart(product, size = "M", quantity = 1) {
       price: finalPrice,
       image: product.image,
       size: size,
-      quantity: quantity
+      quantity: quantity,
     });
   }
 
@@ -99,7 +99,7 @@ export function getCartTotal() {
 export function updateCartBadge() {
   const badgeElement = document.querySelector(".cart-badge");
   const screenReaderText = document.querySelector(".cart-link .visually-hidden");
-  
+
   const count = getCartCount();
 
   if (badgeElement) {
