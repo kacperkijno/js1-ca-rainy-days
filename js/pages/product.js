@@ -161,5 +161,5 @@ imageElement.classList.remove("is-hidden");
       productTabs.classList.add("is-hidden");
     }
   }
-
+}
 initProductPage();
