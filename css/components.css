@@ -936,3 +936,7 @@ select.field__input {
   color: var(--color-white);
   border-color: var(--color-navy);
 }
+
+.checkout-step__fields--card.is-hidden {
+  display: none;
+}
